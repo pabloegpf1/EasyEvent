@@ -1,0 +1,12 @@
+a{
+    display: flex;
+}
+
+.main{
+    display: flex;
+}
+
+.navbar-image{
+    height: 50px;
+    width: 50px;
+}
