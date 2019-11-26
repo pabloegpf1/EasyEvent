@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="./images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>EasyEvent</title>
@@ -86,31 +86,29 @@
                     </div>
                     <h1>To do</h1>
 
-                    <div class="task">
-                        <a class="close" href="#"><img src="images/close.png" alt="close"></a>
-                        <div class="task-description">
-                            <img src="images/task.png" alt="task">
+                    <div class="event-list">
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
                             <h3>Gimnasio</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png" alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
                         </div>
-                        <ul class="task-actions">
-                            <li><a class="action like" title="Like!" href="#"><img class="like" src="images/like.png"
-                                        alt="like"></a></li>
-                            <li>03/06/19 15:47</li>
-                        </ul>
+
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
+                            <h3>Pasear al perro</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png" alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="task">
-                        <a class="close" href="#"><img src="images/close.png" alt="close"></a>
-                        <div class="task-description">
-                            <img src="images/task.png" alt="task">
-                            <h3>Pasear al perro</h3>
-                        </div>
-                        <ul class="task-actions">
-                            <li><a class="action like" title="Like!" href="#"><img class="like" src="images/like.png"
-                                        alt="like"></a></li>
-                            <li>03/06/19 15:47</li>
-                        </ul>
-                    </div>
+                    <form class="new-event">
+                        <input class="form-control mr-sm-2" name="title" name="title" placeholder="New Event" aria-label="New Event">
+                    </form>
 
                 </div>
 
@@ -123,18 +121,19 @@
                         <a href="#">Settings</a>
                     </div>
                     <h1>In progress</h1>
-                    <div class="task">
-                        <a class="close" href="#"><img src="images/close.png" alt="close"></a>
-                        <div class="task-description">
-                            <img src="images/task.png" alt="task">
+                    <div class="event-list">
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
                             <h3>Hacer ejercicio IU</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png" alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
                         </div>
-                        <ul class="task-actions">
-                            <li><a class="action like" title="Like!" href="#"><img class="like" src="images/like.png"
-                                        alt="like"></a></li>
-                            <li>03/06/19 15:47</li>
-                        </ul>
                     </div>
+                    <form class="new-event">
+                        <input class="form-control mr-sm-2" name="title" placeholder="New Event" aria-label="New Event">
+                    </form>
                 </div>
                 <div class="column">
                     <a class="column-options" href="#"><img src="images/menu.png" alt="options"></a>
@@ -145,30 +144,23 @@
                         <a href="#">Settings</a>
                     </div>
                     <h1>Done</h1>
-                    <div class="task">
-                        <a class="close" href="#"><img src="images/close.png" alt="close"></a>
-                        <div class="task-description">
-                            <img src="images/task.png" alt="task">
+                    <div class="event-list">
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
                             <h3>Hacer la cena</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png"alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
                         </div>
-                        <ul class="task-actions">
-                            <li><a class="action like" title="Like!" href="#"><img class="like" src="images/like.png"
-                                        alt="like"></a></li>
-                            <li>03/06/19 15:47</li>
-                        </ul>
                     </div>
+                    <form class="new-event">
+                        <input class="form-control mr-sm-2" name="title" placeholder="New Event" aria-label="New Event">
+                    </form>
                 </div>
-                <div class="column">
-                    <a class="column-options" href="#"><img src="images/menu.png" alt="options"></a>
-                    <div class="column-options-dropdown">
-                        <a class="close-column" href="#">Archive list</a>
-                        <a href="#">Clone list</a>
-                        <a href="#">Share list</a>
-                        <a href="#">Settings</a>
-                    </div>
-                    <h1>+</h1>
-                </div>
-
+                <form class="new-category">
+                    <input class="form-control mr-sm-2" name="title" placeholder="New Category" aria-label="New Event">
+                </form>                
             </div>
         </div>
     </div>

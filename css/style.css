@@ -100,6 +100,16 @@ footer{
     background-color: var(--main-color);
 }
 
+.new-category{
+    min-width: 30%;
+    border: solid 2px black;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    background-color: var(--main-color);
+}
+
 .column-options{
     float: right;
     padding: 5px;
@@ -130,7 +140,22 @@ footer{
     background: gray;
 }
 
-.task{
+.event-list{
+    padding: 10px 0;
+}
+
+.event{
+    border: 2px solid black;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.new-event{
     border: 2px solid black;
     flex-grow: 0;
     flex-shrink: 0;
@@ -151,43 +176,41 @@ footer{
     padding: 5px;
 }
 
-.task-description{
+.event-description{
     display: flex;
     font-size: 20px;
     overflow: hidden;
 }
 
-.task-description img{
+.like{
     flex-shrink: 0;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
     padding: 5px;
 }
 
-.task-description h3{
+.event h3{
     flex-grow: 0;
     margin: 0px;
     overflow: auto;
     max-height: 50px;
 }
 
-.task-actions{
+.event-description{
     display: flex;
     justify-content: space-around;
+    align-items: center;    
+    margin-top: 10px;
     padding: 0;
     font-size: 20px;
 }
 
-.task-actions li{
+.event-description li{
     display: inline-block;
 }
-
-.action{
-    padding: 5px;
-}
               
-.action img{
+.description img{
     width: 25px;
     height: 25px;
 }
