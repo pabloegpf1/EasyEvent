@@ -1,12 +1,251 @@
+:root {
+    --main-color:rgb(137, 206, 174);
+    --title-color:rgb(121, 121, 121);
+    --highlighted-bg-color:rgb(235, 235, 235);
+    --text-color:black;
+}
+
+html, body{ 
+    height:100%; 
+    margin:0; 
+}
+
 a{
     display: flex;
+    color: var(--text-color)!important;
 }
 
 .main{
     display: flex;
+    height: 85%;
+}
+
+.navbar{
+    height: 10%;
+    background-color: var(--main-color);
 }
 
 .navbar-image{
     height: 50px;
     width: 50px;
+}
+
+.dropdown-menu{
+    margin-top: -10px!important;
+    margin-right: 10px!important;
+}
+
+.dropdown-menu a{
+    color: black!important;
+}
+
+
+aside{
+    width: 20%;
+    margin: 3px;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: var(--main-color);
+}
+
+.aside-icons{
+    margin-top: 5px;
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.sidebar-group{
+    padding: 10px;
+}
+
+.sidebar-group h3{
+    color: white!important;
+    background-color: var(--title-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar-group a{
+    margin-left: 10px;
+}
+
+.content{
+    width: 80%;
+    overflow: auto;
+    padding: 4px;
+}
+
+footer{
+    height: 5%;
+    background-color: var(--main-color);
+}
+
+.board{
+    overflow: auto;
+    display: flex;
+    margin-top: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.column{
+    min-width: 30%;
+    border: solid 2px black;
+    flex-shrink: 0;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    background-color: var(--main-color);
+}
+
+.new-category{
+    min-width: 30%;
+    border: solid 2px black;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    background-color: var(--main-color);
+}
+
+.column-options{
+    float: right;
+    padding: 5px;
+}
+
+.column-options img{
+    width: 20px;
+    height: 20px;
+}
+
+.column-options-dropdown{
+    position: absolute;
+    padding: 5px;
+    display: none;
+    flex-direction: column;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px grey;
+    z-index: 5;
+    right: 10px;
+}
+
+.column-options-dropdown a{
+    padding: 5px;
+}
+
+.column-options-dropdown a:hover{
+    background: gray;
+}
+
+.event-list{
+    padding: 10px 0;
+}
+
+.event{
+    border: 2px solid black;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.new-event{
+    border: 2px solid black;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.close{
+    float: right;
+}
+
+.close img{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+.event-description{
+    display: flex;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+.like{
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.event h3{
+    flex-grow: 0;
+    margin: 0px;
+    overflow: auto;
+    max-height: 50px;
+}
+
+.event-description{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;    
+    margin-top: 10px;
+    padding: 0;
+    font-size: 20px;
+}
+
+.event-description li{
+    display: inline-block;
+}
+              
+.description img{
+    width: 25px;
+    height: 25px;
+}
+
+.search-box{
+    border: solid 1px black;
+    background-color: var(--highlighted-bg-color);
+    padding: 10px;
+    border-radius: 7px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.content-block{
+    border: solid 1px black;
+    padding: 10px;
+    border-radius: 7px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.content-block img{
+    border-radius: 7px;
+    display: block;
+    margin: auto;
+}
+
+.content-block h2{
+    background-color: var(--highlighted-bg-color);
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.content-block p{
+    background-color: var(--highlighted-bg-color);
+    padding: 10px;
+    border-radius: 7px;
 }

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>EasyEvent</title>
+</head>
+
+<body>
+    <header class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+            <img class="navbar-image" src="./images/logo.png"> EasyEvent
+        </a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
+        <a class="navbar-brand" href="#" role="menuitem" id="dropdownMenuLink" data-toggle="dropdown">
+            Username <img class="navbar-image" src="./images/user.png">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Editar perfil</a>
+            <a class="dropdown-item" href="#">Mis contactos</a>
+            <a class="dropdown-item" href="#">Cerrar sesión</a>
+        </div>
+    </header>
+    <div class="main">
+        <aside>
+            <div class="sidebar-group">
+                <h3>Eventos</h3>
+                <a href="./calendar.html">
+                    <img class="aside-icons" src="./images/calendar.png" alt="Calendario">
+                    <h4>Calendario</h4>
+                </a>
+                <a href="#">
+                    <img class="aside-icons" src="./images/list.png" alt="Eventos">
+                    <h4>Lista de eventos</h4>
+                </a>
+            </div>
+            <div class="sidebar-group">
+                <h3>Destacado</h3>
+                <a class="" href="./highlighted.html">
+                    <img class="aside-icons" src="./images/danger.png" alt="Eventos destacados">
+                    <h4>Eventos destacados</h4>
+                </a>
+                <a href="./notifications.html">
+                    <img class="aside-icons" src="./images/notifications.png" alt="Notificaciones">
+                    <h4>Notificaciones</h4>
+                </a>
+                <a href="#">
+                    <img class="aside-icons" src="./images/star.svg" alt="Calendario">
+                    <h4>Puntuaciones</h4>
+                </a>
+            </div>
+            <div class="sidebar-group">
+                <h3>Configuración</h3>
+                <a class="" href="#">
+                    <img class="aside-icons" src="./images/help.png" alt="Eventos destacados">
+                    <h4>Ayuda</h4>
+                </a>
+                <a href="#">
+                    <img class="aside-icons" src="./images/translate.png" alt="Notificaciones">
+                    <h4>Idioma</h4>
+                </a>
+                <a href="#" id="colorblind">
+                    <img class="aside-icons" src="./images/color.png" alt="Calendario">
+                    <h4>Modo daltónico</h4>
+                </a>
+            </div>
+        </aside>
+        <div class="content">
+            <div class="search-box">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            <div class="board">
+
+                <div class="column">
+                    <a class="column-options" href="#"><img src="images/menu.png" alt="options"></a>
+                    <div class="column-options-dropdown">
+                        <a class="close-column" href="#">Archive list</a>
+                        <a href="#">Clone list</a>
+                        <a href="#">Share list</a>
+                        <a href="#">Settings</a>
+                    </div>
+                    <h1>To do</h1>
+
+                    <div class="event-list">
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
+                            <h3>Gimnasio</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png" alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
+                        </div>
+
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
+                            <h3>Pasear al perro</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png" alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <form class="new-event">
+                        <input class="form-control mr-sm-2" name="title" name="title" placeholder="New Event" aria-label="New Event">
+                    </form>
+
+                </div>
+
+                <div class="column">
+                    <a class="column-options" href="#"><img src="images/menu.png" alt="options"></a>
+                    <div class="column-options-dropdown">
+                        <a class="close-column" href="#">Archive list</a>
+                        <a href="#">Clone list</a>
+                        <a href="#">Share list</a>
+                        <a href="#">Settings</a>
+                    </div>
+                    <h1>In progress</h1>
+                    <div class="event-list">
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
+                            <h3>Hacer ejercicio IU</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png" alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form class="new-event">
+                        <input class="form-control mr-sm-2" name="title" placeholder="New Event" aria-label="New Event">
+                    </form>
+                </div>
+                <div class="column">
+                    <a class="column-options" href="#"><img src="images/menu.png" alt="options"></a>
+                    <div class="column-options-dropdown">
+                        <a class="close-column" href="#">Archive list</a>
+                        <a href="#">Clone list</a>
+                        <a href="#">Share list</a>
+                        <a href="#">Settings</a>
+                    </div>
+                    <h1>Done</h1>
+                    <div class="event-list">
+                        <div class="event">
+                            <a class="close" href="#"><img src="images/close.png" alt="close"></a>
+                            <h3>Hacer la cena</h3>
+                            <ul class="event-description">
+                                <li><img class="like" src="images/like.png"alt="like"></li>
+                                <li>03/06/19 15:47</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form class="new-event">
+                        <input class="form-control mr-sm-2" name="title" placeholder="New Event" aria-label="New Event">
+                    </form>
+                </div>
+                <form class="new-category">
+                    <input class="form-control mr-sm-2" name="title" placeholder="New Category" aria-label="New Event">
+                </form>                
+            </div>
+        </div>
+    </div>
+    <footer>
+        Copyright©
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="./scripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+</body>
+
+</html>
+<!--NOTAS: MODO DALTONICO; MODO DALTONICO; MODO OSCURO;-->
