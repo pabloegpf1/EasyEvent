@@ -249,3 +249,45 @@ footer{
     padding: 10px;
     border-radius: 7px;
 }
+
+/*Home page*/
+body.home{
+    background-image: linear-gradient(to right,rgb(41, 145, 84),  rgb(137, 206, 174));
+}
+
+.log{
+    min-width: fit-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 3px solid green;
+    border-radius: 5px;
+    padding: 10px;
+}
+.log label{
+    display: flex;
+}
+.log input{
+    width: 50%;
+    border: 0px;
+    margin-left: 20px;
+    border-radius: 3px;
+    align-self: flex-end;
+    margin: 0 0 0 auto;
+}
+.login{
+    display: none;
+}
+#register{
+    width: fit-content;
+    padding: 5px 10px;
+    align-self: center;
+    margin: 0 auto 0 auto;
+}
+
+.invalid{
+    background-color: red;
+    opacity: 15%;
+}
+ 

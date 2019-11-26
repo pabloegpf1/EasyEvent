@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body class="home">
+
+    <!-- Log In -->
+    <form class="log login">
+          <input type="email" name = "email" id="emailLog" aria-describedby="emailHelp" placeholder="example@email.com" required>
+          <input type="password" name="password" id="passwordLog" required>
+          <input type="submit" value="Iniciar Sesion">
+    </form>
+
+    <!-- Register -->
+    <form action="" class="log register">
+        <label for="email">
+            Email:
+            <input type="email" name="email" id="emailReg" required>
+        </label>
+        <label for="confEmail">
+            Confirmar Email:
+            <input type="email" name="confEmail" id = "confEmail" required>
+        </label>
+        <label for="name">
+            Nombre:
+            <input type="text" name="name" id="name">
+        </label>
+        <label for="password">
+            Contraseña:
+            <input type="password" name="password" id="passwordReg" required>
+        </label>
+        <label for="submit">
+            <input type="submit" name="register" id="register" value="Registrarse">
+        </label>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="scripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+</body>
+</html>

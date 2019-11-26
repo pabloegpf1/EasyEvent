@@ -1,3 +1,4 @@
+console.log("CONECTED");
 $(document).ready(function () {
 
     // Close event
@@ -95,6 +96,11 @@ $(document).ready(function () {
         $(this).find('input[name="title"]').val('') 
         event.preventDefault();
     });
+
+    $("#register").click(function(event){
+        let inputs = $(this).parent().find("input");
+        console.log(inputs[0]);
+    })
 
 });
 
