@@ -4,85 +4,92 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="./scripts/jquery.js"></script>
+    <script src="./scripts/index.js"></script>
+    <link rel="stylesheet" href="./scripts/jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="./scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="./scripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <title>EasyEvent</title>
 </head>
 
 <body>
-    <header class="mainHeader" id="header01">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"><img class="navbar-image" src="./images/logo.png"> EasyEvent</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Mis categorías</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Mis contactos</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Eventos archivados</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                </form>
-                <a class="navbar-brand" href="#"><img class="navbar-image" src="./images/user.png"></a>
-            </div>
-        </nav>
+    <header class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+            <img class="navbar-image" src="./images/logo.png"> EasyEvent
+        </a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
+        <a class="navbar-brand" href="#" role="menuitem" id="dropdownMenuLink" data-toggle="dropdown">
+            Username <img class="navbar-image" src="./images/user.png">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Editar perfil</a>
+            <a class="dropdown-item" href="#">Mis contactos</a>
+            <a class="dropdown-item" href="#">Cerrar sesión</a>
+        </div>
     </header>
     <div class="main">
-        <aside class="mainAside">
-            <div>
-                <h2>Programado</h2>
-                <nav>
-                    <a href="#"><img src="#" alt="Calendario">
-                        <h3>Calendario</h3>
-                    </a>
-                    <a href="#"><img src="#" alt="Eventos">
-                        <h3>Lista de eventos</h3>
-                    </a>
-                </nav>
+        <aside>
+            <div class="sidebar-group">
+                <h3>Eventos</h3>
+                <a href="./calendar.html">
+                    <img class="aside-icons" src="./images/calendar.png" alt="Calendario">
+                    <h4>Calendario</h4>
+                </a>
+                <a href="#">
+                    <img class="aside-icons" src="./images/list.png" alt="Eventos">
+                    <h4>Lista de eventos</h4>
+                </a>
             </div>
-            <div class="important">
-                <h2>Importante</h2>
-                <nav>
-                    <a href="#"><img src="#" alt="Eventos destacados">
-                        <h3>Eventos destacados</h3>
-                    </a>
-                    <a href="#"><img src="#" alt="Notificaciones">
-                        <h3>Notificaciones</h3>
-                    </a>
-                    <a href="#"><img src="#" alt="Calendario">
-                        <h3>Calendario</h3>
-                    </a>
-                </nav>
+            <div class="sidebar-group">
+                <h3>Destacado</h3>
+                <a class="" href="./highlighted.html">
+                    <img class="aside-icons" src="./images/danger.png" alt="Eventos destacados">
+                    <h4>Eventos destacados</h4>
+                </a>
+                <a href="#">
+                    <img class="aside-icons" src="./images/notifications.png" alt="Notificaciones">
+                    <h4>Notificaciones</h4>
+                </a>
+                <a href="#">
+                    <img class="aside-icons" src="./images/star.svg" alt="Calendario">
+                    <h4>Puntuaciones</h4>
+                </a>
             </div>
-
+            <div class="sidebar-group">
+                <h3>Configuración</h3>
+                <a class="" href="#">
+                    <img class="aside-icons" src="./images/help.png" alt="Eventos destacados">
+                    <h4>Ayuda</h4>
+                </a>
+                <a href="#">
+                    <img class="aside-icons" src="./images/translate.png" alt="Notificaciones">
+                    <h4>Idioma</h4>
+                </a>
+                <a href="#" id="colorblind">
+                    <img class="aside-icons" src="./images/color.png" alt="Calendario">
+                    <h4>Modo daltónico</h4>
+                </a>
+            </div>
         </aside>
         <div class="content">
-            <h1>Hello, world!</h1>
         </div>
-
     </div>
-
-
-
-
+    <footer>
+        Copyright©
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
-
-
 <!--NOTAS: MODO DALTONICO; MODO DALTONICO; MODO OSCURO;-->
