@@ -97,10 +97,17 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
-    $("#register").click(function(event){
-        let inputs = $(this).parent().find("input");
-        console.log(inputs[0]);
-    })
+    $("#register").on("click", function(){
+        let inputs = $(this).parent().parent().find("input");
+        console.log(inputs[0].value);
+        for (let index = 0; index < inputs.length; index++) {
+            console.log(inputs[index].value);
+            checkform(inputs[index]);
+        }
+    });
 
 });
 
+function checkform(elem){
+    elem.style.background = "red";
+}

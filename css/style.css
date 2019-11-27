@@ -276,6 +276,9 @@ body.home{
     align-self: flex-end;
     margin: 0 0 0 auto;
 }
+.log input.field:valid{
+    border: 2px solid greenyellow;
+}
 .login{
     display: none;
 }
