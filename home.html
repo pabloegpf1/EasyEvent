@@ -10,35 +10,67 @@
 </head>
 <body class="home">
 
-    <!-- Log In -->
-    <form class="log login">
-          <input type="email" name = "email" id="emailLog" aria-describedby="emailHelp" placeholder="example@email.com" required>
-          <input type="password" name="password" id="passwordLog" required>
-          <input type="submit" value="Iniciar Sesion">
-    </form>
+    <header class="home-page">
+        <h1>Easy Event</h1>
+        <img src="images/logo.png" alt="logo">
+    </header>
+    <div class="plain">
+        <div class="explain-web">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus rerum debitis a magni veniam vel nulla, commodi dolore magnam ex delectus. Ducimus sapiente cupiditate quos, ex nihil quo qui a!</p>
+        </div>
 
-    <!-- Register -->
-    <form action="" class="log regist">
-        <label for="email">
-            Email:
-            <input class="field" type="email" name="email" id="emailReg" required>
-        </label>
-        <label for="confEmail">
-            Confirmar Email:
-            <input class="field" type="email" name="confEmail" id = "confEmail" required>
-        </label>
-        <label for="name">
-            Nombre:
-            <input class="field" type="text" name="name" id="name" required>
-        </label>
-        <label for="password">
-            Contraseña:
-            <input class="field" type="password" name="password" id="passwordReg" required>
-        </label>
-        <label for="submit">
-            <input type="submit" name="register" id="register" value="Registrarse">
-        </label>
-    </form>
+        <div class="video-form">
+            <video width="800">
+                <source src="images/Getting Started With Trello (Demo).mp4" type="video/mp4">
+            </video>
+            <!-- Register -->
+            <div class="div-regist">
+                <form action="list.html" class="log regist">
+                    <h2>Registrarse</h2>
+                    <p>
+                        <label for="email">Email: </label>
+                        <input class="field" type="email" name="email" id="emailReg" required>
+                    </p>
+                    <p>
+                        <label for="name">Nombre:</label>
+                        <input class="field" type="text" name="name" id="name" required>
+                    </p>
+                    <p>
+                        <label for="password">Contraseña:</label>
+                        <input class="field" type="password" name="password" id="passwordReg" required>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="checkbox" id="checkbox" value="">
+                        <label for="checkbox">Acepto condiciones de uso</label>
+                    </p>
+                    <input type="submit" name="register" id="register" value="Registrarse">
+                </form>
+                <h6><a href="#">O Inicia Sesion</a></h6>
+            </div>
+            <!-- Log In -->
+            <div class="alertLog">
+                <form class="log login" action="list.html">
+                    <p>
+                        <label for="email">Email:</label>
+                        <input class="field" type="email" name = "email" id="emailLog" aria-describedby="emailHelp" placeholder="example@email.com" required>
+                    </p>
+                    <p>
+                        <label for="password">Contraseña:</label>
+                        <input class="field" type="password" name="password" id="passwordLog" required>
+                    </p>
+                    <input type="submit" name ="submit" id="logIn" value="Iniciar Sesion">
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <footer class="home-footer">
+        Copyright©
+    </footer>
+    
+
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>

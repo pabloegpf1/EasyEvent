@@ -97,17 +97,75 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
-    $("#register").on("click", function(){
+    $(".div-regist a").on("click", function () {
+        $(".alertLog").addClass("show");
+    });
+
+    
+
+
+    $(".regist").submit(function(evt){
+        var inputsArray = Array.prototype.slice.call($(".regist input.field"));
+        
+        console.log(inputsArray);
         let inputs = $(this).parent().parent().find("input");
-        console.log(inputs[0].value);
-        for (let index = 0; index < inputs.length; index++) {
-            console.log(inputs[index].value);
-            checkform(inputs[index]);
+        
+        if (findCookie(inputsArray)>0) {
+            evt.preventDefault();
+            alert("El email: "+inputsArray[0].value+" ya existe");
+        }else{
+            storeCookie(inputsArray);
         }
     });
 
+    $(".login").submit(function (evt){
+        var inputsArray = [].slice.calls($(".login input.field"));
+        console.log(inputsArray[0].value);
+        if (findCookie(inputsArray)!=2) {
+            evt.preventDefault();
+        }
+    });
 });
 
 function checkform(elem){
-    elem.style.background = "red";
+    if(elem.value == ""){
+    }
+}
+
+function storeCookie(array){
+    let storeString = "";
+    storeString = array[0].value + " = ";
+    array.slice(1).forEach(elem => {
+        console.log(elem.value);
+        storeString += elem.value +", ";
+    });
+    storeString += ";path=/";
+    document.cookie = storeString;
+}
+
+function findCookie(array){
+    let found = 0;
+    arrayCookie = splitCookies();
+    arrayCookie.forEach(element => {
+        if (findEmail(array[0].value, element)) {
+            if (findPass(array[1].value, element)) {
+                found++;
+            }
+            found++;
+        }
+    });
+    return found;
+}
+
+function splitCookies(){
+    var splited = document.cookie.split(";");
+    return splited;
+}
+
+function findEmail(email, cookie){
+    return cookie.includes(email);
+}
+
+function findPass(password, cookie){
+    return cookie.includes(password);
 }
