@@ -249,6 +249,21 @@ footer{
     border-radius: 7px;
 }
 
+/* Notifications */
+
+.join{
+    float: right;
+    height: 40px;
+    width: 40px;
+}
+
+.reject{
+    float: right;
+    padding: 5px;
+    height: 40px;
+    width: 40px;
+}
+
 /*footer.home-footer{
     position: absolute;
     bottom: 0;
@@ -358,11 +373,11 @@ body.home{
     margin-right: 0px;
 }
 
-.show{
+.showjs{
     display: initial;
 }
 
-.hide{
+.hidejs{
     display: none;
 }
 
