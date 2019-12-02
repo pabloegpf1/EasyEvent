@@ -1,3 +1,4 @@
+console.log("CONECTED");
 $(document).ready(function () {
 
     // Close event
@@ -96,5 +97,90 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
+    $(".div-regist a").on("click", function () {
+        $(".alertLog").addClass("show");
+    });
+
+    
+
+
+    $(".regist").submit(function(evt){
+        var inputsArray = Array.from($(".regist input.field"));
+        
+        console.log(inputsArray);
+        let inputs = $(this).parent().parent().find("input");
+        
+        if (findCookie(inputsArray)>0) {
+            evt.preventDefault();
+            alert("El email: "+inputsArray[0].value+" ya existe");
+        }else{
+            storeCookie(inputsArray);
+        }
+    });
+
+    $(".login").submit(function (evt){
+        evt.preventDefault();
+        var inputsArray = Array.from($(".login input.field"));
+        console.log(inputsArray[1].value);
+        let found = findCookie(inputsArray);
+        if (found == 2) {
+            window.location.replace("list.html");
+        }else{
+            alert("Usuario y/o contraseña erroneos "+found);
+        }
+    });
 });
 
+function checkform(elem){
+    if(elem.value == ""){
+    }
+}
+
+function storeCookie(array){
+    let storeString = "";
+    storeString = array[0].value + " = ";
+    array.slice(1).forEach(elem => {
+        storeString += elem.value +",";
+    });
+    storeString += ";path=/";
+    document.cookie = storeString;
+}
+
+function findCookie(array){
+    
+    arrayCookie = splitCookies();
+    for(let a = 0; a<arrayCookie.length; a++){
+
+        if (findEmail(array[0].value, arrayCookie[a])) {
+
+            if (findPass(array[1].value, arrayCookie[a])) {
+                return 2;
+            }
+            return 1;
+        }
+    }
+    return 0;
+}
+
+function splitCookies(){
+    var splited = document.cookie.split(";");
+    return splited;
+}
+
+function findEmail(email, cookie){
+    var cookieemail = cookie.split(",");
+    var positionequal = cookieemail[0].indexOf('=');
+    let emailCookie = cookieemail[0].substring(0, positionequal);
+    if(emailCookie == email){
+        return true;
+    }
+    return false;
+}
+
+function findPass(password, cookie){
+    var cookiepassword = cookie.split(",");
+    if(cookiepassword[1] == password){
+        return true;
+    }
+    return false;
+}
