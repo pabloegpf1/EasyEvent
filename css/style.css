@@ -82,6 +82,7 @@ footer{
 }
 
 .board{
+    min-height: 88%;
     overflow: auto;
     display: flex;
     margin-top: 10px;
@@ -89,8 +90,8 @@ footer{
     justify-content: space-between;
 }
 
-.column{
-    min-width: 30%;
+.category{
+    width: 30%;
     border: solid 2px black;
     flex-shrink: 0;
     border-radius: 3px;
@@ -101,7 +102,6 @@ footer{
 }
 
 .new-category{
-    min-width: 30%;
     border: solid 2px black;
     border-radius: 3px;
     margin-left: 5px;
@@ -110,17 +110,17 @@ footer{
     background-color: var(--main-color);
 }
 
-.column-options{
+.category-options{
     float: right;
     padding: 5px;
 }
 
-.column-options img{
+.category-options img{
     width: 20px;
     height: 20px;
 }
 
-.column-options-dropdown{
+.category-options-dropdown{
     position: absolute;
     padding: 5px;
     display: none;
@@ -132,11 +132,11 @@ footer{
     right: 10px;
 }
 
-.column-options-dropdown a{
+.category-options-dropdown a{
     padding: 5px;
 }
 
-.column-options-dropdown a:hover{
+.category-options-dropdown a:hover{
     background: gray;
 }
 
@@ -156,6 +156,7 @@ footer{
 }
 
 .new-event{
+    display: flex;
     border: 2px solid black;
     flex-grow: 0;
     flex-shrink: 0;
@@ -164,6 +165,10 @@ footer{
     margin: 10px;
     background-color: white;
     box-shadow: 2px 2px 2px grey;
+}
+
+.new-event input{
+    width: 50%;
 }
 
 .close{
@@ -188,13 +193,6 @@ footer{
     height: 40px;
     margin-right: 10px;
     padding: 5px;
-}
-
-.event h3{
-    flex-grow: 0;
-    margin: 0px;
-    overflow: auto;
-    max-height: 50px;
 }
 
 .event-description{
