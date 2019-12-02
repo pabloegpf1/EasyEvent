@@ -105,7 +105,7 @@ $(document).ready(function () {
 
 
     $(".regist").submit(function(evt){
-        var inputsArray = Array.prototype.slice.call($(".regist input.field"));
+        var inputsArray = Array.from($(".regist input.field"));
         
         console.log(inputsArray);
         let inputs = $(this).parent().parent().find("input");
@@ -119,10 +119,14 @@ $(document).ready(function () {
     });
 
     $(".login").submit(function (evt){
-        var inputsArray = [].slice.calls($(".login input.field"));
-        console.log(inputsArray[0].value);
-        if (findCookie(inputsArray)!=2) {
-            evt.preventDefault();
+        evt.preventDefault();
+        var inputsArray = Array.from($(".login input.field"));
+        console.log(inputsArray[1].value);
+        let found = findCookie(inputsArray);
+        if (found == 2) {
+            window.location.replace("list.html");
+        }else{
+            alert("Usuario y/o contraseña erroneos "+found);
         }
     });
 });
@@ -136,25 +140,26 @@ function storeCookie(array){
     let storeString = "";
     storeString = array[0].value + " = ";
     array.slice(1).forEach(elem => {
-        console.log(elem.value);
-        storeString += elem.value +", ";
+        storeString += elem.value +",";
     });
     storeString += ";path=/";
     document.cookie = storeString;
 }
 
 function findCookie(array){
-    let found = 0;
+    
     arrayCookie = splitCookies();
-    arrayCookie.forEach(element => {
-        if (findEmail(array[0].value, element)) {
-            if (findPass(array[1].value, element)) {
-                found++;
+    for(let a = 0; a<arrayCookie.length; a++){
+
+        if (findEmail(array[0].value, arrayCookie[a])) {
+
+            if (findPass(array[1].value, arrayCookie[a])) {
+                return 2;
             }
-            found++;
+            return 1;
         }
-    });
-    return found;
+    }
+    return 0;
 }
 
 function splitCookies(){
@@ -163,9 +168,19 @@ function splitCookies(){
 }
 
 function findEmail(email, cookie){
-    return cookie.includes(email);
+    var cookieemail = cookie.split(",");
+    var positionequal = cookieemail[0].indexOf('=');
+    let emailCookie = cookieemail[0].substring(0, positionequal);
+    if(emailCookie == email){
+        return true;
+    }
+    return false;
 }
 
 function findPass(password, cookie){
-    return cookie.includes(password);
+    var cookiepassword = cookie.split(",");
+    if(cookiepassword[1] == password){
+        return true;
+    }
+    return false;
 }
