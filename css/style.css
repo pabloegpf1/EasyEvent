@@ -16,12 +16,12 @@ a{
 }
 
 .main{
+    height: calc(100% - 100px);
     display: flex;
-    height: 85%;
 }
 
 .navbar{
-    height: 10%;
+    height: 70px;
     background-color: var(--main-color);
 }
 
@@ -41,7 +41,8 @@ a{
 
 
 aside{
-    width: 20%;
+    overflow: auto;
+    width: 25%;
     margin: 3px;
     border-radius: 7px;
     padding: 10px;
@@ -77,12 +78,11 @@ aside{
 }
 
 footer{
-    height: 5%;
+    height: 30px;
     background-color: var(--main-color);
 }
 
 .board{
-    min-height: 88%;
     overflow: auto;
     display: flex;
     margin-top: 10px;
@@ -380,3 +380,6 @@ body.home{
     display: none;
 }
 
+.selected{
+    background-color: cadetblue;
+}

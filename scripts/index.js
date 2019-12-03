@@ -24,6 +24,7 @@ $(document).ready(function () {
         event.stopPropagation();
         let title = $(this).find('input[name="title"]').val();
         createCategory(title);
+        
         $(this).find('input[name="title"]').val('')
         addEventListeners();
     });
