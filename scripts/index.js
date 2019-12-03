@@ -14,8 +14,8 @@ $(document).ready(function () {
         let categoryTitle = $(this).parent().find('h2').html();
         let id = storeEventCookie(categoryTitle, title, date);
         createEvent(categoryTitle,title,date,id);
-        $(this).find('input[name="title"]').val('')
-        $(this).find('input[name="date"]').val('')
+        $(this).find('input[name="title"]').val('');
+        $(this).find('input[name="date"]').val('');
         addEventListeners();
     });
 
@@ -27,6 +27,18 @@ $(document).ready(function () {
         
         $(this).find('input[name="title"]').val('')
         addEventListeners();
+        $(".new-event").on('submit', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            let title = $(this).find('input[name="title"]').val();
+            let date = $(this).find('input[name="date"]').val();
+            let categoryTitle = $(this).parent().find('h2').html();
+            let id = storeEventCookie(categoryTitle, title, date);
+            createEvent(categoryTitle,title,date,id);
+            $(this).find('input[name="title"]').val('');
+            $(this).find('input[name="date"]').val('');
+            addEventListeners();
+        });
     });
 
     $(".regist").submit(function (evt) {
@@ -142,8 +154,10 @@ function addEventListeners() {
 
     // Hide category when click on close category
     $('.close-category').on('click', function (event) {
-        if (confirm("Are you sure you want to delete this category?")) {
+        if (confirm("Estas segur@ de que deseas archivar la actividad?. Se borrarán todas las actividades de esta categoría.")) {
             $(this).parent().parent().hide("3000");
+            //Borrar todas las cookies que se encuentren en esta actividad.
+            archiveCategory($(this).parent().parent().find('h2').html());
         }
     });
 
@@ -308,6 +322,16 @@ function getUsername(){
     for(let i =0; i<cookieElements.length; i++){
         if(cookieElements[i].includes("username")){
             return cookieElements[i].substring(cookieElements[i].indexOf("=") + 1);
+        }
+    }
+}
+
+function archiveCategory(categoryTitle){
+    let cookies = splitCookies();
+    let category = "="+categoryTitle+",";
+    for(let a = 0; a < cookies.length; a++){
+        if(cookies[a].includes(category)){
+            document.cookie = cookies[a]+"; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
         }
     }
 }
