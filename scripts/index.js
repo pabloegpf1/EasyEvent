@@ -1,6 +1,10 @@
+let username = getUsername();
+
 $(document).ready(function () {
 
     addEventListeners();
+
+    loadEvents();
 
     $(".new-event").on('submit', function (event) {
         event.preventDefault();
@@ -8,8 +12,8 @@ $(document).ready(function () {
         let title = $(this).find('input[name="title"]').val();
         let date = $(this).find('input[name="date"]').val();
         let categoryTitle = $(this).parent().find('h2').html();
-        console.log(categoryTitle)
-        createEvent(categoryTitle,title,date);
+        let id = storeEventCookie(categoryTitle, title, date);
+        createEvent(categoryTitle,title,date,id);
         $(this).find('input[name="title"]').val('')
         $(this).find('input[name="date"]').val('')
         addEventListeners();
@@ -22,6 +26,34 @@ $(document).ready(function () {
         createCategory(title);
         $(this).find('input[name="title"]').val('')
         addEventListeners();
+    });
+
+    $(".regist").submit(function (evt) {
+        evt.preventDefault();
+        console.log("regist");
+
+        var inputsArray = Array.from($(".regist input.field"));
+        let inputs = $(this).parent().parent().find("input");
+
+        console.log(findCookie(inputsArray))
+        if (findCookie(inputsArray) > 0) {
+            alert("El email: " + inputsArray[0].value + " ya existe");
+        } else {
+            storeCookie(inputsArray);
+            window.location.replace("list.html");
+        }
+    });
+
+    $(".login").submit(function (evt) {
+        evt.preventDefault();
+        var inputsArray = Array.from($(".login input.field"));
+        let found = findCookie(inputsArray);
+        if (found == 2) {
+
+            window.location.replace("list.html");
+        } else {
+            alert("Usuario y/o contraseña erroneos " + found);
+        }
     });
 
 });
@@ -53,6 +85,11 @@ function addEventListeners() {
         connectToSortable: ".event-list",
         stop: function (event, ui) {
             $(ui.helper).css('width', "");
+            let id = $(this).attr('id');
+            let category = $(this).parent().parent().find('h2').html();
+            let title = $(this).find('h3').html();
+            let date = $(this).find('li:nth-child(2)').html();
+            changeEventCookie(category, title, date, id)
         }
     });
 
@@ -110,32 +147,6 @@ function addEventListeners() {
         $(".alertLog").addClass("showjs");
     });
 
-    $(".regist").submit(function (evt) {
-        var inputsArray = Array.from($(".regist input.field"));
-
-        console.log(inputsArray);
-        let inputs = $(this).parent().parent().find("input");
-
-        if (findCookie(inputsArray) > 0) {
-            evt.preventDefault();
-            alert("El email: " + inputsArray[0].value + " ya existe");
-        } else {
-            storeCookie(inputsArray);
-        }
-    });
-
-    $(".login").submit(function (evt) {
-        evt.preventDefault();
-        var inputsArray = Array.from($(".login input.field"));
-        console.log(inputsArray[1].value);
-        let found = findCookie(inputsArray);
-        if (found == 2) {
-            window.location.replace("list.html");
-        } else {
-            alert("Usuario y/o contraseña erroneos " + found);
-        }
-    });
-
     // Reject notification
     $(".reject").on('click', function () {
         if (confirm("Are you sure you want to reject?")) {
@@ -173,7 +184,7 @@ function createCategory(title) {
         `) 
 }
 
-function createEvent(categoryTitle,title,date){
+function createEvent(categoryTitle,title,date,id){
     let categoryPointer = undefined;
     $(".category").each(function (index) {
         if ($(this).find('h2').html() == categoryTitle){
@@ -185,7 +196,7 @@ function createEvent(categoryTitle,title,date){
         categoryPointer = $('.new-category').prev();
     }
     categoryPointer.find('.event-list').append(`
-            <div class="event">
+            <div class="event" id=`+id+`>
                 <a class="close" href="#"><img src="images/close.png" alt="close"></a>
                 <h3>`+ title + `</h3>
                 <ul class="event-description">
@@ -201,14 +212,47 @@ function checkform(elem) {
     }
 }
 
+function storeEventCookie(category, title, date) {
+    let id = username + "-" + Math.floor(Math.random() * 10000000);
+    let storeString = id + "=";
+    storeString += category + ",";
+    storeString += title + ",";
+    storeString += date;
+    storeString += ";path=/list.html";
+    document.cookie = storeString;
+    return id;
+}
+
+function changeEventCookie(category, title, date, id) {
+    let storeString = id + "=";
+    storeString += category + ",";
+    storeString += title + ",";
+    storeString += date;
+    storeString += ";path=/list.html";
+    document.cookie = storeString;
+}
+
+function loadEvents(){
+    let cookies = splitCookies();
+    for(let i = 0; i< cookies.length; i++){
+        let cookie = cookies[i].substring(cookies[i].indexOf("=")+1);
+        let elementArray = cookie.split(',');
+        let id = cookies[i].substring(0, cookies[i].indexOf("=") - 1)
+        if (id.includes(username+"-")) createEvent(elementArray[0], elementArray[1], elementArray[2], id);
+    }
+    addEventListeners();
+}
+
 function storeCookie(array) {
     let storeString = "";
-    storeString = array[0].value + " = ";
+    storeString = array[0].value + "=";
     array.slice(1).forEach(elem => {
         storeString += elem.value + ",";
     });
-    storeString += ";path=/";
+    let username = storeString.substring(storeString.indexOf("=") + 1, storeString.indexOf(","));
+    storeString += ";path=/home.html";
     document.cookie = storeString;
+    document.cookie = "username=" + username +";path=/;"
 }
 
 function findCookie(array) {
@@ -219,6 +263,8 @@ function findCookie(array) {
         if (findEmail(array[0].value, arrayCookie[a])) {
 
             if (findPass(array[1].value, arrayCookie[a])) {
+                username = arrayCookie[a].substring(arrayCookie[a].indexOf('=') + 1, arrayCookie[a].indexOf(','));
+                document.cookie = "username=" + username + ";path=/;"
                 return 2;
             }
             return 1;
@@ -236,6 +282,9 @@ function findEmail(email, cookie) {
     var cookieemail = cookie.split(",");
     var positionequal = cookieemail[0].indexOf('=');
     let emailCookie = cookieemail[0].substring(0, positionequal);
+    if (emailCookie.indexOf(" ") == 0){
+        emailCookie = cookieemail[0].substring(1, positionequal);
+    } 
     if (emailCookie == email) {
         return true;
     }
@@ -248,4 +297,13 @@ function findPass(password, cookie) {
         return true;
     }
     return false;
+}
+
+function getUsername(){
+    let cookieElements = splitCookies();
+    for(let i =0; i<cookieElements.length; i++){
+        if(cookieElements[i].includes("username")){
+            return cookieElements[i].substring(cookieElements[i].indexOf("=") + 1);
+        }
+    }
 }
