@@ -87,7 +87,6 @@ footer{
     display: flex;
     margin-top: 10px;
     align-items: flex-start;
-    justify-content: space-between;
 }
 
 .category{

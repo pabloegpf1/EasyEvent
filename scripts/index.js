@@ -64,6 +64,9 @@ function addEventListeners() {
     $(".close").on('click', function () {
         if (confirm("Are you sure you want to delete this?")) {
             $(this).parent().hide()
+            let id = $(this).parent().attr('id');
+            console.log(id + "=hola; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;")
+            document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
         }
     });
 
@@ -213,7 +216,7 @@ function checkform(elem) {
 }
 
 function storeEventCookie(category, title, date) {
-    let id = username + "-" + Math.floor(Math.random() * 10000000);
+    let id = username + "-" + Math.floor(Math.random() * 100000)+"A";
     let storeString = id + "=";
     storeString += category + ",";
     storeString += title + ",";
