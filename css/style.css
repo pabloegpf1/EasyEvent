@@ -97,6 +97,9 @@ aside{
     width: 25%;
     padding: 10px;
     background-color: var(--main-color);
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 5px;
 }
 
 .aside-icons{
