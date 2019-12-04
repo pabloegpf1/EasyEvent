@@ -126,7 +126,7 @@ function addEventListeners() {
             let id = $(this).parent().attr('id');
             console.log(id + "=hola; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;")
             //AQUI HAY UNA A
-            document.cookie = id+"A= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
+            document.cookie = id+"A= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
         }
     });
 
@@ -229,7 +229,7 @@ function addEventListeners() {
 
     // Like event
     $(".event").on('dblclick', function () {
-        window.location.replace("/event.html");
+        window.location.replace("event.html");
     });
 
 }
@@ -289,7 +289,7 @@ function storeEventCookie(category, title, date) {
     storeString += category + ",";
     storeString += title + ",";
     storeString += date;
-    storeString += ";path=/list.html";
+    storeString += ";path=/;";
     document.cookie = storeString;
     return id;
 }
@@ -299,7 +299,7 @@ function changeEventCookie(category, title, date, id) {
     storeString += category + ",";
     storeString += title + ",";
     storeString += date;
-    storeString += ";path=/list.html";
+    storeString += ";path=/;";
     document.cookie = storeString;
 }
 
@@ -321,7 +321,7 @@ function storeCookie(array) {
         storeString += elem.value + ",";
     });
     let username = storeString.substring(storeString.indexOf("=") + 1, storeString.indexOf(","));
-    storeString += ";path=/index.html";
+    storeString += ";path=/;";
     document.cookie = storeString;
     document.cookie = "username=" + username +";path=/;"
     addUsername(username);
@@ -337,7 +337,7 @@ function addUsername(username){
         }
     }
     if (!users) {
-        document.cookie = "usuarios= "+username+","+";path=/";
+        document.cookie = "usuarios= "+username+","+";path=/;";
     }
 }
 
@@ -399,7 +399,7 @@ function archiveCategory(categoryTitle){
     let category = "="+categoryTitle+",";
     for(let a = 0; a < cookies.length; a++){
         if(cookies[a].includes(category)){
-            document.cookie = cookies[a]+"; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
+            document.cookie = cookies[a]+"; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
         }
     }
 }
@@ -427,7 +427,7 @@ function storeNotificationCategory(user, titleActivity, date){
     let storeString = id + "=";
     storeString += titleActivity + ",";
     storeString += date;
-    storeString += ";path=/notifications.html";
+    storeString += ";path=/;";
     document.cookie = storeString;
 }
 
@@ -508,7 +508,7 @@ function findNotification(id){
 }
 
 function deleteNotificationFromCookie(id){
-    document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/notifications.html;";
+    document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
 }
 
 function addNotifiactionToActivities(){
