@@ -309,10 +309,21 @@ footer{
     margin: auto;
 }
 
-.content-block h2{
+.activity-description{
+    display: flex;
+    justify-content: space-between;
     background-color: var(--highlighted-bg-color);
     padding: 10px;
     border-radius: 7px;
+    margin-bottom: 5px;
+}
+.opt-activity{
+    display: flex;
+    width: 20%;
+}
+
+.opt-activity img{
+    width: 20%;
 }
 
 .content-block p{
@@ -426,19 +437,6 @@ body.home{
     margin-right: 0px;
 }
 
-.showjs{
-    display: initial;
-}
-
-.hidejs{
-    display: none;
-}
-
-.sidebar-group h4{
-    padding: 5px;
-    border-radius: 5px;
-}
-
 .selected{
     background-color: cadetblue;
 }
@@ -516,6 +514,101 @@ label {
     min-height: 80px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+/*Highlighted*/
+
+.share-alert{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: rgba(95, 158, 160, 0.589);
+}
+
+.share-with{
+    text-align: center;
+    position: relative;
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px black solid;
+    padding: 10px;
+    border-radius: 3px;
+    vertical-align: middle;
+    background-color: rgb(42, 129, 78);
+}
+
+.input-User{
+    align-content: center;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.opt-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.opt-buttons button{
+    border: none;
+    background-color: cadetblue;
+    padding: 5px 10px 5px 10px;
+    border-radius: 3px;
+    margin-right: 7px;
+}
+
+.opt-buttons button:last-of-type{
+    margin-right: 0px;
+}
+
+.share-with input[type=text]{
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+}
+
+.pointers{
+    cursor: pointer;
+}
+
+.tit-notifications{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.opt-notifications{
+    display: flex;
+    justify-content: space-around;
+    width: 10%;
+}
+
+.opt-notifications img{
+    width: 40%;
+}
+
+
+
+.validInput{
+    background-color: greenyellow;
+}
+
+.invalidInput{
+    background-color: red;
+}
+
+.showjs{
+    display: initial;
+}
+
+.hidejs{
+    display: none;
 }
 
 @media screen and (max-width: 768px) {

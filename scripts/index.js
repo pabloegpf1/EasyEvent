@@ -5,6 +5,8 @@ $(document).ready(function () {
     addEventListeners();
 
     loadEvents();
+    
+    loadNotifiactions();
 
     $("#username").html(username)
 
@@ -65,9 +67,51 @@ $(document).ready(function () {
         var inputsArray = Array.from($("#login input"));
         let found = findCookie(inputsArray);
         if (found == 2) {
+            
             window.location.replace("list.html");
         } else {
             alert("Usuario y/o contraseña erroneos " + found);
+        }
+    });
+
+    $(".joingroup-activity").on("click", function () {
+        let titleActivity = $(this).parent().parent().find("h2").html();
+        let date = $(this).parent().parent().parent().find("p").html();
+        storeEventCookie("Sin Categoría", titleActivity, date);
+    });
+
+    $(".sharefriend-activity").on("click", function () {
+        $("#activity-name").text($(this).parent().parent().find("h2").html());
+        $("#activity-date").text($(this).parent().parent().parent().find("p").html());
+        $(".share-alert").show();
+    });
+
+    $("#cancel-button").on("click", function () {
+        $(this).parent().parent().parent().parent().hide();
+    });
+
+    $("#share-button").on("click", function(){
+       let userToshare = $(this).parent().parent().find("input").val();
+       let allUsers = obtainUsers();
+       if (!findUser(userToshare, allUsers) || userToshare == "") {
+           $(".input-User input").css("background-color","red");
+       }else{
+           let activityname = $("#activity-name").html();
+           let activitydate = $("#activity-date").html();
+           storeNotificationCategory(userToshare, activityname, activitydate);
+           $(".share-alert").hide();
+       }
+    });
+
+    $(".input-User input").on("input", function () {
+        let user = $(this).val();
+        let allUsers = obtainUsers();
+        console.log(user+","+allUsers)
+        let realUser = findUser(user, allUsers);
+        if (!realUser || user == "") {
+            $(this).removeClass("validInput").addClass("invalidInput");
+        }else{
+            $(this).removeClass("invalidInput").addClass("validInput");
         }
     });
 
@@ -81,7 +125,8 @@ function addEventListeners() {
             $(this).parent().hide()
             let id = $(this).parent().attr('id');
             console.log(id + "=hola; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;")
-            document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
+            //AQUI HAY UNA A
+            document.cookie = id+"A= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
         }
     });
 
@@ -107,7 +152,8 @@ function addEventListeners() {
             let category = $(this).parent().parent().find('h2').html();
             let title = $(this).find('h3').html();
             let date = $(this).find('li:nth-child(2)').html();
-            changeEventCookie(category, title, date, id)
+            //OOOOTRA A ESTO ES FILPANTE
+            changeEventCookie(category, title, date, id+"A");
         }
     });
 
@@ -269,7 +315,6 @@ function loadEvents(){
 }
 
 function storeCookie(array) {
-    console.log(array)
     let storeString = "";
     storeString = array[0].value + "=";
     array.slice(1).forEach(elem => {
@@ -279,6 +324,21 @@ function storeCookie(array) {
     storeString += ";path=/index.html";
     document.cookie = storeString;
     document.cookie = "username=" + username +";path=/;"
+    addUsername(username);
+}
+
+function addUsername(username){
+    let arrayCookie = splitCookies();
+    let users = false;
+    for(let i = 0; i < arrayCookie.length ; i++){
+        if (arrayCookie[i].includes("usuarios")) {
+            document.cookie = arrayCookie[i] +" "+ username+",";
+            users = true;
+        }
+    }
+    if (!users) {
+        document.cookie = "usuarios= "+username+","+";path=/";
+    }
 }
 
 function findCookie(array) {
@@ -342,4 +402,115 @@ function archiveCategory(categoryTitle){
             document.cookie = cookies[a]+"; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
         }
     }
+}
+
+function obtainUsers(){
+    let cookies = splitCookies();
+    for(let i = 0; i<cookies.length; i++){
+        if (cookies[i].includes("usuarios=")) {
+            return cookies[i];
+        }
+    }
+    return "";
+}
+
+function findUser(user, users){
+    if (users.includes(user+",")) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function storeNotificationCategory(user, titleActivity, date){
+    let id = "NOT-"+user + "-" + Math.floor(Math.random() * 100000)+"A";
+    let storeString = id + "=";
+    storeString += titleActivity + ",";
+    storeString += date;
+    storeString += ";path=/notifications.html";
+    document.cookie = storeString;
+}
+
+function createNotification(id, title, date){
+    $(".content").append(`
+    <div class="alert alert-info alert-dismissible fade show" id= "`+id+`" role="alert">
+    <div class="tit-notifications">
+        <strong>`+title+`</strong>
+        <div class="opt-notifications">
+            <img class="pointers acceptNotification" src="images/check.png">
+            <img class="pointers closeNotification" src="images/cancel.png">
+        </div>
+    </div>
+    <hr>
+    <p class="mb-0">`+date+`</p>
+    </div>`
+    );
+    eventsNotifications();
+}
+
+function loadNotifiactions(){
+    let notificationCookie = splitCookies();
+    for(let i = 0; i < notificationCookie.length; i++){
+        if (notificationCookie[i].includes("NOT-"+username+"-")) {
+            let title = getTitleActivity(notificationCookie[i]);
+            let date = getDateActivity(notificationCookie[i]);
+            let id = getIDNotifiaction(notificationCookie[i]);
+            createNotification(id, title, date);
+        }
+    }
+}
+
+function getIDNotifiaction(cookie){
+    let id = cookie.substring(0, cookie.indexOf("=")-1);
+    return id;
+}
+
+function getTitleActivity(cookie){
+    let title = cookie.substring(cookie.indexOf("=") + 1, cookie.indexOf(","));
+    return title;
+}
+
+function getDateActivity(cookie){
+    let date = cookie.substring(cookie.indexOf(",")+1);
+    return date;
+}
+
+function eventsNotifications(){
+    $(".closeNotification").on("click", function () {
+        if (confirm("¿Seguro que desea eliminar la notificación?")) {
+            $(this).parent().parent().parent().hide();
+            let id = $(this).parent().parent().parent().attr('id');
+            //AQUI HAY OTRA A
+            deleteNotificationFromCookie(id+"A");            
+        }
+    });
+
+    //Join
+    $(".acceptNotification").on("click", function () {
+        let titleActivity = $(this).parent().parent().find("strong").html();
+        let date = $(this).parent().parent().parent().find("p").html();
+        console.log(titleActivity+"-"+date);
+        storeEventCookie("Sin Categoría", titleActivity, date);
+        $(this).parent().parent().parent().hide();
+        let id = $(this).parent().parent().parent().attr('id');
+        deleteNotificationFromCookie(id+"A");
+    });
+}
+
+function findNotification(id){
+    let notifiactionsCookies = splitCookies();
+    for(let i = 0; i<notifiactionsCookies.length; i++){
+        if (notifiactionsCookies[i].includes(id)) {
+            return notifiactionsCookies[i];
+        }
+    }
+    return "";
+}
+
+function deleteNotificationFromCookie(id){
+    document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/notifications.html;";
+}
+
+function addNotifiactionToActivities(){
+
 }
