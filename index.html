@@ -13,68 +13,76 @@
 
 <body>
     <header class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/list.html">
             <img class="navbar-image" src="./images/logo.png"> EasyEvent
         </a>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
-        <a class="navbar-brand" href="#" role="menuitem" id="dropdownMenuLink" data-toggle="dropdown">
-            Username <img class="navbar-image" src="./images/user.png">
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Editar perfil</a>
-            <a class="dropdown-item" href="#">Mis contactos</a>
-            <a class="dropdown-item" href="#">Cerrar sesión</a>
-        </div>
     </header>
-    <div class="main">
-        <aside>
-            <div class="sidebar-group">
-                <h3>Eventos</h3>
-                <a href="./calendar.html">
-                    <img class="aside-icons" src="./images/calendar.png" alt="Calendario">
-                    <h4>Calendario</h4>
-                </a>
-                <a href="./list.html">
-                    <img class="aside-icons" src="./images/list.png" alt="Eventos">
-                    <h4>Lista de eventos</h4>
-                </a>
-            </div>
-            <div class="sidebar-group">
-                <h3>Destacado</h3>
-                <a class="" href="./highlighted.html">
-                    <img class="aside-icons" src="./images/danger.png" alt="Eventos destacados">
-                    <h4>Eventos destacados</h4>
-                </a>
-                <a href="./notifications.html">
-                    <img class="aside-icons" src="./images/notifications.png" alt="Notificaciones">
-                    <h4>Notificaciones</h4>
-                </a>
-                <a href="#">
-                    <img class="aside-icons" src="./images/star.svg" alt="Calendario">
-                    <h4>Puntuaciones</h4>
-                </a>
-            </div>
-            <div class="sidebar-group">
-                <h3>Configuración</h3>
-                <a class="" href="#">
-                    <img class="aside-icons" src="./images/help.png" alt="Eventos destacados">
-                    <h4>Ayuda</h4>
-                </a>
-                <a href="#">
-                    <img class="aside-icons" src="./images/translate.png" alt="Notificaciones">
-                    <h4>Idioma</h4>
-                </a>
-                <a href="#" id="colorblind">
-                    <img class="aside-icons" src="./images/color.png" alt="Calendario">
-                    <h4>Modo daltónico</h4>
-                </a>
-            </div>
-        </aside>
-        <div class="content">
+    <div class="main-login">
+
+        <div class="video">
+            <video width="800"  controls>
+                <source src="images/Getting Started With Trello (Demo).mp4" type="video/mp4">
+            </video>
         </div>
+
+        <form id="regist" class="regist">
+            <h2>Registro de usuario</h2>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" name="email" id="emailReg" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input type="text" name="name" id="name" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="passwordReg" required
+                    id="exampleInputPassword1">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="check" required>
+                <label class="form-check-label" for="check">Acepto condiciones de uso</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarme</button>
+        </form>
+
+        <form id="login" class="login">
+            <h2>Inicio de sesión</h2>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" name="email" id="emailLog" required
+                    id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="passwordLog" required
+                    id="exampleInputPassword1">
+            </div>
+            <button type="submit" id="logIn" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+
     </div>
     <footer>
-        Copyright©
+        <div class="social-media">
+            <a href="#">
+                <img class="aside-icons" src="./images/facebook.png" alt="Calendario">
+            </a>
+            <a href="#">
+                <img class="aside-icons" src="./images/instagram.png" alt="Calendario">
+            </a>
+            <a href="#">
+                <img class="aside-icons" src="./images/twitter.png" alt="Calendario">
+            </a>
+            <a href="#">
+                <img class="aside-icons" src="./images/email.png" alt="Calendario">
+            </a>
+        </div>
+        <a class="privacy" href="/">
+            Copyright© Política de privacidad
+        </a>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
@@ -87,4 +95,3 @@
 </body>
 
 </html>
-<!--NOTAS: MODO DALTONICO; MODO DALTONICO; MODO OSCURO;-->

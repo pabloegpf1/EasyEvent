@@ -1,5 +1,6 @@
 :root {
     --main-color:rgb(137, 206, 174);
+    --login-color:rgb(101, 170, 138);
     --title-color:rgb(121, 121, 121);
     --highlighted-bg-color:rgb(235, 235, 235);
     --text-color:black;
@@ -20,7 +21,31 @@ a{
     display: flex;
 }
 
+.main-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+    height: calc(100% - 100px);
+    background-color: var(--login-color)!important;
+}
+
+.regist{
+    margin-top: 150px;
+}
+
+.login{
+    margin-top: 150px;
+}
+
+.video{
+    margin-top: 150px;
+}
+
 .navbar{
+    text-align: center;
     height: 70px;
     background-color: var(--main-color);
 }
@@ -28,6 +53,17 @@ a{
 .navbar-image{
     height: 50px;
     width: 50px;
+}
+
+.navbar-nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-nav img{
+  margin-left: 20px;
 }
 
 .dropdown-menu{
@@ -78,8 +114,19 @@ aside{
 }
 
 footer{
+    display: flex!important;
+    flex-direction: row;
+    justify-content: space-between;
     height: 30px;
     background-color: var(--main-color);
+}
+
+.social-media{
+    display: flex;
+}
+
+.privacy{
+    margin-right: 10px;
 }
 
 .board{
@@ -90,7 +137,7 @@ footer{
 }
 
 .category{
-    width: 30%;
+    width: 300px;
     border: solid 2px black;
     flex-shrink: 0;
     border-radius: 3px;
@@ -289,12 +336,7 @@ body.home{
 .home-page img{
     width: 3%;
 }
-.video-form{
-    display: flex;
-    justify-content: space-around;
-    margin: 10px 0px 10px 0px;
-    align-items: center;
-}
+
 .log{
     text-align: center;
 }
@@ -325,20 +367,6 @@ body.home{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.603);
 }
-
-.login{
-    padding: 10px;
-    border-radius: 3px;
-    background-color: rgb(137, 206, 174);
-    position: relative;
-    width: fit-content;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-
-
 
 /*activity info*/
 .activity-info{
@@ -380,6 +408,16 @@ body.home{
     display: none;
 }
 
+.sidebar-group h4{
+    padding: 5px;
+    border-radius: 5px;
+}
+
 .selected{
     background-color: cadetblue;
+}
+
+label {
+    display: inline-block;
+    width: 5em;
 }

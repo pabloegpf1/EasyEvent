@@ -6,6 +6,12 @@ $(document).ready(function () {
 
     loadEvents();
 
+    $("#username").html(username)
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
     $(".new-event").on('submit', function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -41,12 +47,9 @@ $(document).ready(function () {
         });
     });
 
-    $(".regist").submit(function (evt) {
+    $("#regist").submit(function (evt) {
         evt.preventDefault();
-        console.log("regist");
-
-        var inputsArray = Array.from($(".regist input.field"));
-        let inputs = $(this).parent().parent().find("input");
+        var inputsArray = Array.from($("#regist input:not(#check)"));
 
         console.log(findCookie(inputsArray))
         if (findCookie(inputsArray) > 0) {
@@ -57,12 +60,11 @@ $(document).ready(function () {
         }
     });
 
-    $(".login").submit(function (evt) {
+    $("#login").submit(function (evt) {
         evt.preventDefault();
-        var inputsArray = Array.from($(".login input.field"));
+        var inputsArray = Array.from($("#login input"));
         let found = findCookie(inputsArray);
         if (found == 2) {
-
             window.location.replace("list.html");
         } else {
             alert("Usuario y/o contraseña erroneos " + found);
@@ -262,13 +264,14 @@ function loadEvents(){
 }
 
 function storeCookie(array) {
+    console.log(array)
     let storeString = "";
     storeString = array[0].value + "=";
     array.slice(1).forEach(elem => {
         storeString += elem.value + ",";
     });
     let username = storeString.substring(storeString.indexOf("=") + 1, storeString.indexOf(","));
-    storeString += ";path=/home.html";
+    storeString += ";path=/index.html";
     document.cookie = storeString;
     document.cookie = "username=" + username +";path=/;"
 }

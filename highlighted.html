@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="./images/favicon.ico">
-    <link rel="stylesheet" href="./scripts/jquery-ui-1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,17 +13,37 @@
 
 <body>
     <header class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/list.html">
             <img class="navbar-image" src="./images/logo.png"> EasyEvent
         </a>
+        <ul class="navbar-nav mr-auto">
+            <a data-toggle="tooltip" title="Calendario" title="Calendario" class="nav-item" href="calendar.html">
+                <img class="aside-icons" src="./images/calendar.png" alt="Calendario">
+            </a>
+            <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
+                <img class="aside-icons" src="./images/list.png" alt="Lista">
+            </a>
+            <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
+                <img class="aside-icons" src="./images/danger.png" alt="Destacados">
+            </a>
+            <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
+                <img class="aside-icons" src="./images/notifications.png" alt="Notificaciones">
+            </a>
+            <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
+                <img class="aside-icons" src="./images/chat.png" alt="Chat">
+            </a>
+            <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
+                <img class="aside-icons" src="./images/star.svg" alt="Puntuaciones">
+            </a>
+        </ul>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
         <a class="navbar-brand" href="#" role="menuitem" id="dropdownMenuLink" data-toggle="dropdown">
-            Username <img class="navbar-image" src="./images/user.png">
+            <span id="username">Username</span> <img class="navbar-image" src="./images/user.png">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="#">Editar perfil</a>
             <a class="dropdown-item" href="#">Mis contactos</a>
-            <a class="dropdown-item" href="#">Cerrar sesión</a>
+            <a class="dropdown-item" href="/index.html">Cerrar sesión</a>
         </div>
     </header>
     <div class="main">
@@ -33,41 +52,47 @@
                 <h3>Eventos</h3>
                 <a href="./calendar.html">
                     <img class="aside-icons" src="./images/calendar.png" alt="Calendario">
-                    <h4>Calendario</h4>
+                    <h4 data-toggle="tooltip" title="Ver tus actividades en un calendario">Calendario
+                    </h4>
                 </a>
                 <a href="./list.html">
                     <img class="aside-icons" src="./images/list.png" alt="Eventos">
-                    <h4>Lista de eventos</h4>
+                    <h4 data-toggle="tooltip" title="Ver tus actividades en formato columnas">Lista de eventos</h4>
                 </a>
             </div>
             <div class="sidebar-group">
                 <h3>Destacado</h3>
-                <a class="" href="./highlighted.html">
+                <a href="./highlighted.html">
                     <img class="aside-icons" src="./images/danger.png" alt="Eventos destacados">
-                    <h4 class="selected">Eventos destacados</h4>
+                    <h4 class="selected"  data-toggle="tooltip" title="Encuentra eventos a los que unirte">Eventos destacados</h4>
                 </a>
                 <a href="./notifications.html">
                     <img class="aside-icons" src="./images/notifications.png" alt="Notificaciones">
-                    <h4>Notificaciones</h4>
+                    <h4 data-toggle="tooltip" title="Comprueba quién quiere que te unas a su evento">Notificaciones</h4>
                 </a>
-                <a href="#">
-                    <img class="aside-icons" src="./images/star.svg" alt="Calendario">
-                    <h4>Puntuaciones</h4>
+                <a href="./chat.html">
+                    <img class="aside-icons" src="./images/chat.png" alt="Chat">
+                    <h4 data-toggle="tooltip" title="Envia mensajes a tus amigos">Chat</h4>
+                </a>
+                <a href="./likes.html">
+                    <img class="aside-icons" src="./images/star.svg" alt="Likes">
+                    <h4 data-toggle="tooltip" title="Recopilación de eventos que te gustan">Puntuaciones</h4>
                 </a>
             </div>
             <div class="sidebar-group">
-                <h3>Configuración</h3>
-                <a class="" href="#">
+                <h3 title="Accede a opciones de configuración">Configuración</h3>
+                <a class="" href="./settings.html">
                     <img class="aside-icons" src="./images/help.png" alt="Eventos destacados">
-                    <h4>Ayuda</h4>
+                    <h4 data-toggle="tooltip" title="Encuentra ayuda para usar la aplicación">Ayuda</h4>
                 </a>
-                <a href="#">
+                <a href="./settings.html">
                     <img class="aside-icons" src="./images/translate.png" alt="Notificaciones">
-                    <h4>Idioma</h4>
+                    <h4 data-toggle="tooltip" title="Cambia el idioma de la página">Idioma</h4>
                 </a>
-                <a href="#" id="colorblind">
+                <a href="./settings.html" id="colorblind">
                     <img class="aside-icons" src="./images/color.png" alt="Calendario">
-                    <h4>Modo daltónico</h4>
+                    <h4 data-toggle="tooltip" title="Cambia la paleta de colores para adaptarla a tus necesidades">Modo
+                        daltónico</h4>
                 </a>
             </div>
         </aside>
@@ -94,7 +119,23 @@
         </div>
     </div>
     <footer>
-        Copyright©
+        <div class="social-media">
+            <a href="#">
+                <img class="aside-icons" src="./images/facebook.png" alt="Calendario">
+            </a>
+            <a href="#">
+                <img class="aside-icons" src="./images/instagram.png" alt="Calendario">
+            </a>
+            <a href="#">
+                <img class="aside-icons" src="./images/twitter.png" alt="Calendario">
+            </a>
+            <a href="#">
+                <img class="aside-icons" src="./images/email.png" alt="Calendario">
+            </a>
+        </div>
+        <a class="privacy" href="/">
+            Copyright© Política de privacidad
+        </a>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
@@ -107,4 +148,3 @@
 </body>
 
 </html>
-<!--NOTAS: MODO DALTONICO; MODO DALTONICO; MODO OSCURO;-->
