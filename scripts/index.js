@@ -125,7 +125,8 @@ function addEventListeners() {
             $(this).parent().hide()
             let id = $(this).parent().attr('id');
             console.log(id + "=hola; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;")
-            document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
+            //AQUI HAY UNA A
+            document.cookie = id+"A= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/list.html;";
         }
     });
 
@@ -151,7 +152,8 @@ function addEventListeners() {
             let category = $(this).parent().parent().find('h2').html();
             let title = $(this).find('h3').html();
             let date = $(this).find('li:nth-child(2)').html();
-            changeEventCookie(category, title, date, id)
+            //OOOOTRA A ESTO ES FILPANTE
+            changeEventCookie(category, title, date, id+"A");
         }
     });
 
@@ -429,13 +431,13 @@ function storeNotificationCategory(user, titleActivity, date){
     document.cookie = storeString;
 }
 
-function createNotification(title, date){
+function createNotification(id, title, date){
     $(".content").append(`
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <div class="alert alert-info alert-dismissible fade show" id= "`+id+`" role="alert">
     <div class="tit-notifications">
         <strong>`+title+`</strong>
         <div class="opt-notifications">
-            <img class="pointers acceptNotifiaction" src="images/check.png">
+            <img class="pointers acceptNotification" src="images/check.png">
             <img class="pointers closeNotification" src="images/cancel.png">
         </div>
     </div>
@@ -452,9 +454,15 @@ function loadNotifiactions(){
         if (notificationCookie[i].includes("NOT-"+username+"-")) {
             let title = getTitleActivity(notificationCookie[i]);
             let date = getDateActivity(notificationCookie[i]);
-            createNotification(title, date);
+            let id = getIDNotifiaction(notificationCookie[i]);
+            createNotification(id, title, date);
         }
     }
+}
+
+function getIDNotifiaction(cookie){
+    let id = cookie.substring(0, cookie.indexOf("=")-1);
+    return id;
 }
 
 function getTitleActivity(cookie){
@@ -469,18 +477,38 @@ function getDateActivity(cookie){
 
 function eventsNotifications(){
     $(".closeNotification").on("click", function () {
-        $(this).parent().parent().parent().hide();
+        if (confirm("¿Seguro que desea eliminar la notificación?")) {
+            $(this).parent().parent().parent().hide();
+            let id = $(this).parent().parent().parent().attr('id');
+            //AQUI HAY OTRA A
+            deleteNotificationFromCookie(id+"A");            
+        }
     });
 
     //Join
+    $(".acceptNotification").on("click", function () {
+        let titleActivity = $(this).parent().parent().find("strong").html();
+        let date = $(this).parent().parent().parent().find("p").html();
+        console.log(titleActivity+"-"+date);
+        storeEventCookie("Sin Categoría", titleActivity, date);
+        $(this).parent().parent().parent().hide();
+        let id = $(this).parent().parent().parent().attr('id');
+        deleteNotificationFromCookie(id+"A");
+    });
 }
 
-function findNotification(){
+function findNotification(id){
     let notifiactionsCookies = splitCookies();
+    for(let i = 0; i<notifiactionsCookies.length; i++){
+        if (notifiactionsCookies[i].includes(id)) {
+            return notifiactionsCookies[i];
+        }
+    }
+    return "";
 }
 
-function deleteNotificationFromCookie(){
-
+function deleteNotificationFromCookie(id){
+    document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/notifications.html;";
 }
 
 function addNotifiactionToActivities(){

@@ -530,7 +530,7 @@ label {
 .share-with{
     text-align: center;
     position: relative;
-    width: fit-content;
+    width: 30%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
