@@ -230,7 +230,7 @@ function addEventListeners() {
 
     // Like event
     $(".event").on('dblclick', function () {
-        window.location.replace("/event.html");
+        window.location.replace("event.html");
     });
 
 }
