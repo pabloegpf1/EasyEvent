@@ -1,6 +1,6 @@
 :root {
     --main-color:rgb(137, 206, 174);
-    --login-color:rgb(101, 170, 138);
+    --bg-color:rgb(127, 179, 166);
     --title-color:rgb(121, 121, 121);
     --highlighted-bg-color:rgb(235, 235, 235);
     --text-color:black;
@@ -9,6 +9,8 @@
 html, body{ 
     height:100%; 
     margin:0; 
+    background-color: var(--bg-color)!important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='127' height='127' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23000' fill-opacity='0.2' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");
 }
 
 a{
@@ -17,11 +19,12 @@ a{
 }
 
 .main{
-    height: calc(100% - 100px);
+    height: calc(100% - 120px);
     display: flex;
 }
 
 .main-login{
+    color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -29,7 +32,8 @@ a{
     padding-right: 50px;
     padding-left: 50px;
     height: calc(100% - 100px);
-    background-color: var(--login-color)!important;
+    background-color: var(--main-color);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='127' height='127' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23000' fill-opacity='0.2' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");
 }
 
 .regist{
@@ -37,6 +41,7 @@ a{
 }
 
 .login{
+    padding: 5px;
     margin-top: 150px;
 }
 
@@ -48,6 +53,14 @@ a{
     text-align: center;
     height: 70px;
     background-color: var(--main-color);
+    border: 1px solid black;
+    position: relative;
+}
+
+.navbar-icons{
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
 }
 
 .navbar-image{
@@ -56,7 +69,11 @@ a{
 }
 
 .navbar-nav{
-    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    left: 43%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,12 +92,9 @@ a{
     color: black!important;
 }
 
-
 aside{
     overflow: auto;
     width: 25%;
-    margin: 3px;
-    border-radius: 7px;
     padding: 10px;
     background-color: var(--main-color);
 }
@@ -117,16 +131,25 @@ footer{
     display: flex!important;
     flex-direction: row;
     justify-content: space-between;
-    height: 30px;
+    height: 50px;
     background-color: var(--main-color);
+    border: 1px solid black;
+    position: relative;
 }
 
 .social-media{
     display: flex;
+    position: absolute;
+    right: 1%;
+    margin-right: 15px;
+    top: 20%;
 }
 
 .privacy{
-    margin-right: 10px;
+    display: flex;
+    position: absolute;
+    margin-left: 15px;
+    top: 20%;
 }
 
 .board{
@@ -199,6 +222,7 @@ footer{
     margin: 10px;
     background-color: white;
     box-shadow: 2px 2px 2px grey;
+    z-index: 1;
 }
 
 .new-event{
@@ -421,3 +445,82 @@ label {
     display: inline-block;
     width: 5em;
 }
+
+.event-block {
+  display: grid;
+  grid-gap: 10px;
+  height: 100%;
+}
+
+.event-image{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    border-radius: 5px;
+    object-fit: cover; /* also try `contain` and `fill` */
+}
+
+.event-image img{
+    object-fit: fill;
+}
+
+.event-people{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.event-details{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.event-comments{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.event-opinion{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.event-content{
+    background-color: white;
+    padding: 10px;
+    min-height: 80px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    aside{
+        display: none!important;
+    }
+    .content{
+        width: 100%;
+    }   
+} 

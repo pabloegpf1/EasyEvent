@@ -181,6 +181,11 @@ function addEventListeners() {
         }
     });
 
+    // Like event
+    $(".event").on('dblclick', function () {
+        window.location.replace("/event.html");
+    });
+
 }
 
 function createCategory(title) {
@@ -188,10 +193,10 @@ function createCategory(title) {
             <div class="category">
                 <a class="category-options" href="#"><img src="images/menu.png" alt="options"></a>
                 <div class="category-options-dropdown">
-                    <a class="close-category" href="#">Archive list</a>
-                    <a href="#">Clone list</a>
-                    <a href="#">Share list</a>
-                    <a href="#">Settings</a>
+                    <a class="close-category" href="#">Archivar lista</a>
+                    <a href="#">Clonar lista</a>
+                    <a href="#">Compartir lista</a>
+                    <a href="#">Ajustes</a>
                 </div>
                 <h2>`+ title + `</h2>
                 <div class="event-list">
