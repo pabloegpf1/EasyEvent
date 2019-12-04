@@ -259,6 +259,10 @@ footer{
     overflow: hidden;
 }
 
+.event h3{
+    overflow: auto;
+}
+
 .like{
     flex-shrink: 0;
     width: 40px;

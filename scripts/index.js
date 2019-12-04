@@ -54,6 +54,7 @@ $(document).ready(function () {
         var inputsArray = Array.from($("#regist input:not(#check)"));
 
         console.log(findCookie(inputsArray))
+        console.log(inputsArray);
         if (findCookie(inputsArray) > 0) {
             alert("El email: " + inputsArray[0].value + " ya existe");
         } else {
@@ -121,10 +122,10 @@ function addEventListeners() {
 
     // Close event
     $(".close").on('click', function () {
-        if (confirm("Are you sure you want to delete this?")) {
+        if (confirm("¿Estas seguro de que quieres borrar este evento?")) {
             $(this).parent().hide()
             let id = $(this).parent().attr('id');
-            console.log(id + "=hola; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;")
+            console.log(id);
             //AQUI HAY UNA A
             document.cookie = id+"A= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
         }
@@ -202,7 +203,7 @@ function addEventListeners() {
 
     // Hide category when click on close category
     $('.close-category').on('click', function (event) {
-        if (confirm("Estas segur@ de que deseas archivar la actividad?. Se borrarán todas las actividades de esta categoría.")) {
+        if (confirm("¿Estas segur@ de que deseas archivar la actividad?. Se borrarán todas las actividades de esta categoría.")) {
             $(this).parent().parent().hide("3000");
             //Borrar todas las cookies que se encuentren en esta actividad.
             archiveCategory($(this).parent().parent().find('h2').html());
@@ -215,21 +216,16 @@ function addEventListeners() {
 
     // Reject notification
     $(".reject").on('click', function () {
-        if (confirm("Are you sure you want to reject?")) {
+        if (confirm("¿Segur@ que quieres renunciar a este evento?")) {
             $(this).parent().hide()
         }
     });
 
     // Accept notification
     $(".join").on('click', function () {
-        if (confirm("Do you want to add this event to your list?")) {
+        if (confirm("¿Quieres añadir este evento a tu lista?")) {
             $(this).parent().hide();
         }
-    });
-
-    // Like event
-    $(".event").on('dblclick', function () {
-        window.location.replace("event.html");
     });
 
 }
@@ -273,6 +269,7 @@ function createEvent(categoryTitle,title,date,id){
                 <ul class="event-description">
                     <li><img class="like new" src="images/like.png" alt="like"></li>
                     <li>`+ date + `</li>
+                    <li><a href="event.html">+info</a></li>
                 </ul>
             </div>
         `)
@@ -427,7 +424,7 @@ function storeNotificationCategory(user, titleActivity, date){
     let storeString = id + "=";
     storeString += titleActivity + ",";
     storeString += date;
-    storeString += ";path=/;";
+    storeString += ";path=/";
     document.cookie = storeString;
 }
 
@@ -477,7 +474,7 @@ function getDateActivity(cookie){
 
 function eventsNotifications(){
     $(".closeNotification").on("click", function () {
-        if (confirm("¿Seguro que desea eliminar la notificación?")) {
+        if (confirm("¿Segur@ que desea eliminar la notificación?")) {
             $(this).parent().parent().parent().hide();
             let id = $(this).parent().parent().parent().attr('id');
             //AQUI HAY OTRA A
