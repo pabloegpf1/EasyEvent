@@ -1,4 +1,6 @@
-let username = getUsername();
+let username = getUserdata()[0];
+let useremail = getUserdata()[1];
+let userpassword = getUserdata()[2];
 
 $(document).ready(function () {
 
@@ -112,7 +114,6 @@ $(document).ready(function () {
         var inputsArray = Array.from($("#login input"));
         let found = findCookie(inputsArray);
         if (found == 2) {
-
             window.location.replace("list.html");
         } else {
             alert("Usuario y/o contraseña erroneos " + found);
@@ -158,6 +159,20 @@ $(document).ready(function () {
         } else {
             $(this).removeClass("invalidInput").addClass("validInput");
         }
+    });
+
+    //Data from user in user.html
+    $(".user-info input[type=email]").val(useremail);
+    $(".user-info input[type=text]").val(username);
+    $(".user-info input[type=password]").val(userpassword);
+
+    $(".user-info").on("submit", function (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        let newpassword = $(".user-info input[type=password]").val();
+        document.cookie = "username="+username+","+useremail+","+newpassword+";path=/;";
+        changePassword(newpassword);
+        window.location.replace("index.html");
     });
 
 });
@@ -363,11 +378,14 @@ function storeCookie(array) {
     array.slice(1).forEach(elem => {
         storeString += elem.value + ",";
     });
-    let username = storeString.substring(storeString.indexOf("=") + 1, storeString.indexOf(","));
+    let newUserData = storeString.substring(storeString.indexOf("=") + 1).split(",");
+    let newUserName = newUserData[0];
+    let newusserpassword = newUserData[1];
+    let newUserEmail = storeString.substring(0, storeString.indexOf("="));
     storeString += ";path=/;";
     document.cookie = storeString;
-    document.cookie = "username=" + username +";path=/;"
-    addUsername(username);
+    document.cookie = "username=" + newUserName +","+newUserEmail+","+newusserpassword+";path=/;";
+    addUsername(newUserName);
 }
 
 // Keeps track of username 
@@ -376,7 +394,7 @@ function addUsername(username){
     let users = false;
     for(let i = 0; i < arrayCookie.length ; i++){
         if (arrayCookie[i].includes("usuarios")) {
-            document.cookie = arrayCookie[i] +" "+ username+",";
+            document.cookie = arrayCookie[i] + username+",;path=/;";
             users = true;
         }
     }
@@ -396,7 +414,7 @@ function findCookie(array) {
 
             if (findPass(array[1].value, arrayCookie[a])) {
                 username = arrayCookie[a].substring(arrayCookie[a].indexOf('=') + 1, arrayCookie[a].indexOf(','));
-                document.cookie = "username=" + username + ";path=/;"
+                document.cookie = "username=" + username + ","+array[0].value+","+array[1].value+";path=/;"
                 return 2;
             }
             return 1;
@@ -447,15 +465,7 @@ function findPass(password, cookie) {
     return false;
 }
 
-// Get username from cookies
-function getUsername(){
-    let cookieElements = splitCookies();
-    for(let i =0; i<cookieElements.length; i++){
-        if(cookieElements[i].includes("username")){
-            return cookieElements[i].substring(cookieElements[i].indexOf("=") + 1);
-        }
-    }
-}
+
 
 
 // Deletes all event cookies from a given category
@@ -491,7 +501,7 @@ function findUser(user, users){
 
 // Creates cookie for a notification
 function storeNotificationCategory(user, titleActivity, date){
-    let id = "NOT-"+user + "-" + Math.floor(Math.random() * 100000)+"A";
+    let id = user + "NOT-" + Math.floor(Math.random() * 100000)+"A";
     let storeString = id + "=";
     storeString += titleActivity + ",";
     storeString += date;
@@ -521,7 +531,7 @@ function createNotification(id, title, date){
 function loadNotifiactions(){
     let notificationCookie = splitCookies();
     for(let i = 0; i < notificationCookie.length; i++){
-        if (notificationCookie[i].includes("NOT-"+username+"-")) {
+        if (notificationCookie[i].includes(username+"NOT-")) {
             let title = getTitleActivity(notificationCookie[i]);
             let date = getDateActivity(notificationCookie[i]);
             let id = getIDNotifiaction(notificationCookie[i]);
@@ -586,5 +596,20 @@ function findNotification(id){
 // Deletes notification by id
 function deleteNotificationFromCookie(id){
     document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
+}
+
+function changePassword(newpassword){
+    document.cookie = useremail+"="+username+","+newpassword+"; path=/";
+}
+
+// Get username, email and password from cookies. Username -> position 0. Email -> position 1. Password -> position 2.
+function getUserdata(){
+    let cookieElements = splitCookies();
+    for(let i =0; i<cookieElements.length; i++){
+        if(cookieElements[i].includes("username")){
+            return cookieElements[i].substring(cookieElements[i].indexOf("=") + 1).split(",");
+        }
+    }
+    return ["", "", ""];
 }
 
