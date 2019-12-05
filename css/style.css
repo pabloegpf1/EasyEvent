@@ -652,4 +652,8 @@ label {
     .main{
         margin-top: 50px;
     }
+    .main-login{
+        flex-direction: column;
+        overflow: auto;
+    }
 } 
