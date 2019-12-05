@@ -260,7 +260,8 @@ footer{
     overflow: auto;
 }
 
-.like{
+.like, .share{
+    cursor: pointer;
     flex-shrink: 0;
     width: 40px;
     height: 40px;

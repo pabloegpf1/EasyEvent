@@ -132,6 +132,14 @@ $(document).ready(function () {
         $(".share-alert").show();
     });
 
+    $(".sharelist-activity").on("click", function () {
+        let listActivitydate = $(this).parent().parent().find("li:nth-child(3)").html();
+        let listActivityTitle = $(this).parent().parent().parent().find("h3").html();
+        $("#activity-name").text(listActivityTitle);
+        $("#activity-date").text(listActivitydate);
+        $(".share-alert").show();
+    });
+
     $("#cancel-button").on("click", function () {
         $(this).parent().parent().parent().parent().hide();
     });
@@ -287,6 +295,15 @@ function addEventListeners() {
         }
     });
 
+    //Share activity
+    $(".sharelist-activity").on("click", function () {
+        let listActivitydate = $(this).parent().parent().find("li:nth-child(3)").html();
+        let listActivityTitle = $(this).parent().parent().parent().find("h3").html();
+        $("#activity-name").text(listActivityTitle);
+        $("#activity-date").text(listActivitydate);
+        $(".share-alert").show();
+    });
+
 }
 
 // html for new category
@@ -329,6 +346,7 @@ function createEvent(categoryTitle,title,date,id){
                 <h3>`+ title + `</h3>
                 <ul class="event-description">
                     <li><img class="like new" src="images/like.png" alt="like"></li>
+                    <li><img class="share new sharelist-activity" src="images/share.svg" alt="like"></li>
                     <li>`+ date + `</li>
                     <li><a href="event.html">+info</a></li>
                 </ul>
