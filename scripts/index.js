@@ -82,9 +82,6 @@ $(document).ready(function () {
         if (inputsArray[2].value.length<8){
             alert("La contraseña ha de tener al menos 8 caracteres.")
             return
-        } else if (inputsArray[1].value.contains('@') == false){
-            alert("El formato de email es incorrecto.")
-            return
         }else{
             if (findCookie(inputsArray) > 0) {
                 alert("El email: " + inputsArray[0].value + " ya existe");
