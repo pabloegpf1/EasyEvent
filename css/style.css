@@ -625,7 +625,7 @@ label {
     position: absolute;
     right: 20%;
     left: 20%;
-    top: 8%;
+     margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -646,14 +646,12 @@ label {
     .mr-auto{
         display: none!important; 
     }
-    .search-box{
-        display: none;
-    }
     .main{
-        margin-top: 50px;
+        margin-top: 60px;
     }
     .main-login{
         flex-direction: column;
         overflow: auto;
     }
+
 } 
