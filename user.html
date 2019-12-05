@@ -115,8 +115,7 @@
                 <a href="settings.html" id="colorblind">
                     <img class="aside-icons" src="./images/color.png" alt="Calendario">
                     <h4 data-toggle="tooltip" title="Cambia la paleta de colores para adaptarla a tus necesidades">
-                        Modo
-                        daltónico</h4>
+                        Modo daltónico</h4>
                 </a>
             </div>
         </aside>
@@ -127,6 +126,7 @@
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" name="email" id="emailReg" class="form-control" id="exampleInputEmail1"
                         aria-describedby="emailHelp" required>
+                    <small>El email debe ser del formato: usuario@web.com.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombre</label>
@@ -137,10 +137,11 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" name="password" id="passwordReg" required
                         id="exampleInputPassword1">
+                    <small>La contraseña debe tener 8 caracteres.</small>
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="check" required>
-                    <label class="form-check-label" for="check">Acepto condiciones de uso</label>
+                    <label class="form-check-label conditions" for="check">Acepto condiciones de uso</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Cambiar datos</button>
             </form>

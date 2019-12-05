@@ -5,10 +5,21 @@ $(document).ready(function () {
     addEventListeners();
 
     loadEvents();
-    
+
     loadNotifiactions();
 
     $("#username").html(username)
+
+    $(".search-box").find('input').keyup(function () {
+        let query = $(this).val();
+        $(".event").each(function (index) {
+            if($(this).find("h3").html().includes(query) == false){
+                $(this).css("display","none")
+            }else{
+                $(this).css("display", "block")
+            }
+        });
+    });
 
     // Colorblind
     if (getCookieByKey("colorblind") == "true") {
@@ -21,13 +32,13 @@ $(document).ready(function () {
     $("#colorblind").on('click', function (event) {
         event.preventDefault()
         console.log(getCookieByKey("colorblind"))
-        if (getCookieByKey("colorblind") == "true"){
+        if (getCookieByKey("colorblind") == "true") {
             document.cookie = "colorblind=false; path=/;"
             $("body").get(0).style.setProperty("--main-color", "rgb(137, 206, 174)");
             $("body").get(0).style.setProperty("--bg-color", "rgb(127, 179, 166)");
             $("body").get(0).style.setProperty("--text-color", "black");
             colorblind = false;
-        }else{
+        } else {
             document.cookie = "colorblind=true; path=/;"
             $("body").get(0).style.setProperty("--main-color", "orange");
             $("body").get(0).style.setProperty("--bg-color", "gray");
@@ -44,12 +55,14 @@ $(document).ready(function () {
         event.stopPropagation();
         let title = $(this).find('input[name="title"]').val();
         let date = $(this).find('input[name="date"]').val();
-        let categoryTitle = $(this).parent().find('h2').html();
-        let id = storeEventCookie(categoryTitle, title, date);
-        createEvent(categoryTitle,title,date,id);
-        $(this).find('input[name="title"]').val('');
-        $(this).find('input[name="date"]').val('');
-        addEventListeners();
+        if (title.length != 0) {
+            let categoryTitle = $(this).parent().find('h2').html();
+            let id = storeEventCookie(categoryTitle, title, date);
+            createEvent(categoryTitle, title, date, id);
+            $(this).find('input[name="title"]').val('');
+            $(this).find('input[name="date"]').val('');
+            addEventListeners();
+        }
     });
 
     $(".new-category").on('submit', function (event) {
@@ -57,7 +70,7 @@ $(document).ready(function () {
         event.stopPropagation();
         let title = $(this).find('input[name="title"]').val();
         createCategory(title);
-        
+
         $(this).find('input[name="title"]').val('')
         addEventListeners();
         $(".new-event").on('submit', function (event) {
@@ -65,12 +78,14 @@ $(document).ready(function () {
             event.stopPropagation();
             let title = $(this).find('input[name="title"]').val();
             let date = $(this).find('input[name="date"]').val();
-            let categoryTitle = $(this).parent().find('h2').html();
-            let id = storeEventCookie(categoryTitle, title, date);
-            createEvent(categoryTitle,title,date,id);
-            $(this).find('input[name="title"]').val('');
-            $(this).find('input[name="date"]').val('');
-            addEventListeners();
+            if(title.length != 0){
+                let categoryTitle = $(this).parent().find('h2').html();
+                let id = storeEventCookie(categoryTitle, title, date);
+                createEvent(categoryTitle, title, date, id);
+                $(this).find('input[name="title"]').val('');
+                $(this).find('input[name="date"]').val('');
+                addEventListeners();
+            }
         });
     });
 
@@ -79,10 +94,10 @@ $(document).ready(function () {
         var inputsArray = Array.from($("#regist input:not(#check)"));
 
         console.log(inputsArray);
-        if (inputsArray[2].value.length<8){
+        if (inputsArray[2].value.length < 8) {
             alert("La contraseña ha de tener al menos 8 caracteres.")
             return
-        }else{
+        } else {
             if (findCookie(inputsArray) > 0) {
                 alert("El email: " + inputsArray[0].value + " ya existe");
             } else {
@@ -97,7 +112,7 @@ $(document).ready(function () {
         var inputsArray = Array.from($("#login input"));
         let found = findCookie(inputsArray);
         if (found == 2) {
-            
+
             window.location.replace("list.html");
         } else {
             alert("Usuario y/o contraseña erroneos " + found);
@@ -120,27 +135,27 @@ $(document).ready(function () {
         $(this).parent().parent().parent().parent().hide();
     });
 
-    $("#share-button").on("click", function(){
-       let userToshare = $(this).parent().parent().find("input").val();
-       let allUsers = obtainUsers();
-       if (!findUser(userToshare, allUsers) || userToshare == "") {
-           $(".input-User input").css("background-color","red");
-       }else{
-           let activityname = $("#activity-name").html();
-           let activitydate = $("#activity-date").html();
-           storeNotificationCategory(userToshare, activityname, activitydate);
-           $(".share-alert").hide();
-       }
+    $("#share-button").on("click", function () {
+        let userToshare = $(this).parent().parent().find("input").val();
+        let allUsers = obtainUsers();
+        if (!findUser(userToshare, allUsers) || userToshare == "") {
+            $(".input-User input").css("background-color", "red");
+        } else {
+            let activityname = $("#activity-name").html();
+            let activitydate = $("#activity-date").html();
+            storeNotificationCategory(userToshare, activityname, activitydate);
+            $(".share-alert").hide();
+        }
     });
 
     $(".input-User input").on("input", function () {
         let user = $(this).val();
         let allUsers = obtainUsers();
-        console.log(user+","+allUsers)
+        console.log(user + "," + allUsers)
         let realUser = findUser(user, allUsers);
         if (!realUser || user == "") {
             $(this).removeClass("validInput").addClass("invalidInput");
-        }else{
+        } else {
             $(this).removeClass("invalidInput").addClass("validInput");
         }
     });
@@ -259,6 +274,7 @@ function addEventListeners() {
 
 }
 
+// html for new category
 function createCategory(title) {
      $('.new-category').before(`
             <div class="category">
@@ -280,6 +296,7 @@ function createCategory(title) {
         `) 
 }
 
+// Handles new event html generation
 function createEvent(categoryTitle,title,date,id){
     let categoryPointer = undefined;
     $(".category").each(function (index) {
@@ -304,11 +321,7 @@ function createEvent(categoryTitle,title,date,id){
         `)
 }
 
-function checkform(elem) {
-    if (elem.value == "") {
-    }
-}
-
+// Store a cookie for an event
 function storeEventCookie(category, title, date) {
     let id = username + "-" + Math.floor(Math.random() * 100000)+"A";
     let storeString = id + "=";
@@ -320,6 +333,7 @@ function storeEventCookie(category, title, date) {
     return id;
 }
 
+// Modify cookie for a given event id
 function changeEventCookie(category, title, date, id) {
     let storeString = id + "=";
     storeString += category + ",";
@@ -329,6 +343,8 @@ function changeEventCookie(category, title, date, id) {
     document.cookie = storeString;
 }
 
+
+// gets all the events from cookies
 function loadEvents(){
     let cookies = splitCookies();
     for(let i = 0; i< cookies.length; i++){
@@ -340,6 +356,7 @@ function loadEvents(){
     addEventListeners();
 }
 
+// Stores cookies from array of elements
 function storeCookie(array) {
     let storeString = "";
     storeString = array[0].value + "=";
@@ -353,6 +370,7 @@ function storeCookie(array) {
     addUsername(username);
 }
 
+// Keeps track of username 
 function addUsername(username){
     let arrayCookie = splitCookies();
     let users = false;
@@ -367,6 +385,8 @@ function addUsername(username){
     }
 }
 
+
+// Check email and password from cookies
 function findCookie(array) {
 
     arrayCookie = splitCookies();
@@ -385,11 +405,14 @@ function findCookie(array) {
     return 0;
 }
 
+// Format cookies to get separate values
 function splitCookies() {
     var splited = document.cookie.split(";");
     return splited;
 }
 
+
+// Get email from cookies
 function findEmail(email, cookie) {
     var cookieemail = cookie.split(",");
     var positionequal = cookieemail[0].indexOf('=');
@@ -403,6 +426,7 @@ function findEmail(email, cookie) {
     return false;
 }
 
+// get any cookie by id
 function getCookieByKey(name) {
     var allCookieArray = document.cookie.split(';');
     for (var i = 0; i < allCookieArray.length; i++) {
@@ -413,6 +437,8 @@ function getCookieByKey(name) {
     return false;
 }
 
+
+// Get password from cookies
 function findPass(password, cookie) {
     var cookiepassword = cookie.split(",");
     if (cookiepassword[1] == password) {
@@ -421,6 +447,7 @@ function findPass(password, cookie) {
     return false;
 }
 
+// Get username from cookies
 function getUsername(){
     let cookieElements = splitCookies();
     for(let i =0; i<cookieElements.length; i++){
@@ -430,6 +457,8 @@ function getUsername(){
     }
 }
 
+
+// Deletes all event cookies from a given category
 function archiveCategory(categoryTitle){
     let cookies = splitCookies();
     let category = "="+categoryTitle+",";
@@ -440,6 +469,7 @@ function archiveCategory(categoryTitle){
     }
 }
 
+// Gets a list of all users registered
 function obtainUsers(){
     let cookies = splitCookies();
     for(let i = 0; i<cookies.length; i++){
@@ -450,6 +480,7 @@ function obtainUsers(){
     return "";
 }
 
+// Checks if user exists
 function findUser(user, users){
     if (users.includes(user+",")) {
         return true;
@@ -458,6 +489,7 @@ function findUser(user, users){
     }
 }
 
+// Creates cookie for a notification
 function storeNotificationCategory(user, titleActivity, date){
     let id = "NOT-"+user + "-" + Math.floor(Math.random() * 100000)+"A";
     let storeString = id + "=";
@@ -467,6 +499,7 @@ function storeNotificationCategory(user, titleActivity, date){
     document.cookie = storeString;
 }
 
+// Created notificatio html for each notification cookie
 function createNotification(id, title, date){
     $("#notifications").append(`
     <div class="alert alert-info alert-dismissible fade show" id= "`+id+`" role="alert">
@@ -484,6 +517,7 @@ function createNotification(id, title, date){
     eventsNotifications();
 }
 
+// Gets all notifications
 function loadNotifiactions(){
     let notificationCookie = splitCookies();
     for(let i = 0; i < notificationCookie.length; i++){
@@ -496,21 +530,26 @@ function loadNotifiactions(){
     }
 }
 
+// Gets id from notification
 function getIDNotifiaction(cookie){
     let id = cookie.substring(0, cookie.indexOf("=")-1);
     return id;
 }
 
+
+// Gets title of activity from cookies
 function getTitleActivity(cookie){
     let title = cookie.substring(cookie.indexOf("=") + 1, cookie.indexOf(","));
     return title;
 }
 
+// Gets date of activity from cookies
 function getDateActivity(cookie){
     let date = cookie.substring(cookie.indexOf(",")+1);
     return date;
 }
 
+// Actions for notifications
 function eventsNotifications(){
     $(".closeNotification").on("click", function () {
         if (confirm("¿Segur@ que desea eliminar la notificación?")) {
@@ -533,6 +572,7 @@ function eventsNotifications(){
     });
 }
 
+// Find notification by id
 function findNotification(id){
     let notifiactionsCookies = splitCookies();
     for(let i = 0; i<notifiactionsCookies.length; i++){
@@ -543,10 +583,8 @@ function findNotification(id){
     return "";
 }
 
+// Deletes notification by id
 function deleteNotificationFromCookie(id){
     document.cookie = id+"= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
 }
 
-function addNotifiactionToActivities(){
-
-}
