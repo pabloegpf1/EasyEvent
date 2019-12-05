@@ -45,28 +45,28 @@
             <a class="dropdown-item" href="index.html">Cerrar sesión</a>
         </div>
     </header>
-        <div class="mobile-header">
-            <ul>
-                <a data-toggle="tooltip" title="Calendario" title="Calendario" class="nav-item" href="calendar.html">
-                    <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
-                </a>
-                <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
-                    <img class="navbar-icons" src="./images/list.png" alt="Lista">
-                </a>
-                <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
-                    <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
-                </a>
-                <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
-                    <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
-                </a>
-                <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
-                    <img class="navbar-icons" src="./images/chat.png" alt="Chat">
-                </a>
-                <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
-                    <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
-                </a>
-            </ul>
-        </div>
+    <div class="mobile-header">
+        <ul>
+            <a data-toggle="tooltip" title="Calendario" title="Calendario" class="nav-item" href="calendar.html">
+                <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
+            </a>
+            <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
+                <img class="navbar-icons" src="./images/list.png" alt="Lista">
+            </a>
+            <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
+                <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
+            </a>
+            <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
+                <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
+            </a>
+            <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
+                <img class="navbar-icons" src="./images/chat.png" alt="Chat">
+            </a>
+            <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
+                <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
+            </a>
+        </ul>
+    </div>
     <div class="main">
         <aside>
             <div class="sidebar-group">
@@ -78,7 +78,7 @@
                 </a>
                 <a href="./list.html">
                     <img class="aside-icons" src="./images/list.png" alt="Eventos">
-                    <h4 class="selected" data-toggle="tooltip" title="Ver tus actividades en formato columnas">Lista de eventos</h4>
+                    <h4 data-toggle="tooltip" title="Ver tus actividades en formato columnas">Lista de eventos</h4>
                 </a>
             </div>
             <div class="sidebar-group">
@@ -89,7 +89,8 @@
                 </a>
                 <a href="./notifications.html">
                     <img class="aside-icons" src="./images/notifications.png" alt="Notificaciones">
-                    <h4 data-toggle="tooltip" title="Comprueba quién quiere que te unas a su evento">Notificaciones</h4>
+                    <h4 data-toggle="tooltip" title="Comprueba quién quiere que te unas a su evento">Notificaciones
+                    </h4>
                 </a>
                 <a href="./chat.html">
                     <img class="aside-icons" src="./images/chat.png" alt="Chat">
@@ -97,7 +98,8 @@
                 </a>
                 <a href="./likes.html">
                     <img class="aside-icons" src="./images/star.svg" alt="Likes">
-                    <h4 data-toggle="tooltip" title="Recopilación de eventos que te gustan">Puntuaciones</h4>
+                    <h4 data-toggle="tooltip" title="Recopilación de eventos que te gustan">
+                        Puntuaciones</h4>
                 </a>
             </div>
             <div class="sidebar-group">
@@ -112,22 +114,36 @@
                 </a>
                 <a href="./settings.html" id="colorblind">
                     <img class="aside-icons" src="./images/color.png" alt="Calendario">
-                    <h4 data-toggle="tooltip" title="Cambia la paleta de colores para adaptarla a tus necesidades">Modo
+                    <h4 data-toggle="tooltip" title="Cambia la paleta de colores para adaptarla a tus necesidades">
+                        Modo
                         daltónico</h4>
                 </a>
             </div>
         </aside>
         <div class="content">
-            <div class="search-box">
-                <input class="form-control mr-sm-2" type="search" placeholder="Búsqueda por título de evento"
-                    aria-label="Search">
-            </div>
-            <div class="board">
-                <form class="category new-category">
-                    <input class="form-control mr-sm-2" name="title" placeholder="Nueva categoría"
-                        aria-label="Nueva categoría">
-                </form>
-            </div>
+            <form class="user-info">
+                <h2>Mis datos de usuario</h2>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" name="email" id="emailReg" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre</label>
+                    <input type="text" name="name" id="name" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" id="passwordReg" required
+                        id="exampleInputPassword1">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="check" required>
+                    <label class="form-check-label" for="check">Acepto condiciones de uso</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Cambiar datos</button>
+            </form>
         </div>
     </div>
     <footer>

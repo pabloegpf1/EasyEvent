@@ -41,33 +41,32 @@
             <span id="username">Username</span> <img class="navbar-image" src="./images/user.png">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Editar perfil</a>
-            <a class="dropdown-item" href="#">Mis contactos</a>
-            <a class="dropdown-item" href="/index.html">Cerrar sesión</a>
+            <a class="dropdown-item" href="user.html">Editar perfil</a>
+            <a class="dropdown-item" href="index.html">Cerrar sesión</a>
         </div>
     </header>
-        <div class="mobile-header">
-            <ul>
-                <a data-toggle="tooltip" title="Calendario" title="Calendario" class="nav-item" href="calendar.html">
-                    <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
-                </a>
-                <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
-                    <img class="navbar-icons" src="./images/list.png" alt="Lista">
-                </a>
-                <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
-                    <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
-                </a>
-                <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
-                    <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
-                </a>
-                <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
-                    <img class="navbar-icons" src="./images/chat.png" alt="Chat">
-                </a>
-                <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
-                    <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
-                </a>
-            </ul>
-        </div>
+    <div class="mobile-header">
+        <ul>
+            <a data-toggle="tooltip" title="Calendario" title="Calendario" class="nav-item" href="calendar.html">
+                <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
+            </a>
+            <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
+                <img class="navbar-icons" src="./images/list.png" alt="Lista">
+            </a>
+            <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
+                <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
+            </a>
+            <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
+                <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
+            </a>
+            <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
+                <img class="navbar-icons" src="./images/chat.png" alt="Chat">
+            </a>
+            <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
+                <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
+            </a>
+        </ul>
+    </div>
     <div class="main">
         <aside>
             <div class="sidebar-group">
@@ -90,7 +89,8 @@
                 </a>
                 <a href="./notifications.html">
                     <img class="aside-icons" src="./images/notifications.png" alt="Notificaciones">
-                    <h4 data-toggle="tooltip" title="Comprueba quién quiere que te unas a su evento">Notificaciones</h4>
+                    <h4 data-toggle="tooltip" title="Comprueba quién quiere que te unas a su evento">Notificaciones
+                    </h4>
                 </a>
                 <a href="./chat.html">
                     <img class="aside-icons" src="./images/chat.png" alt="Chat">
@@ -98,14 +98,15 @@
                 </a>
                 <a href="./likes.html">
                     <img class="aside-icons" src="./images/star.svg" alt="Likes">
-                    <h4 data-toggle="tooltip" title="Recopilación de eventos que te gustan">Puntuaciones</h4>
+                    <h4 data-toggle="tooltip" title="Recopilación de eventos que te gustan">
+                        Puntuaciones</h4>
                 </a>
             </div>
             <div class="sidebar-group">
                 <h3 title="Accede a opciones de configuración">Configuración</h3>
                 <a class="" href="./settings.html">
                     <img class="aside-icons" src="./images/help.png" alt="Eventos destacados">
-                    <h4 data-toggle="tooltip" title="Encuentra ayuda para usar la aplicación">Ayuda</h4>
+                    <h4 class="selected" data-toggle="tooltip" title="Encuentra ayuda para usar la aplicación">Ayuda</h4>
                 </a>
                 <a href="./settings.html">
                     <img class="aside-icons" src="./images/translate.png" alt="Notificaciones">
@@ -113,12 +114,26 @@
                 </a>
                 <a href="./settings.html" id="colorblind">
                     <img class="aside-icons" src="./images/color.png" alt="Calendario">
-                    <h4 data-toggle="tooltip" title="Cambia la paleta de colores para adaptarla a tus necesidades">Modo
+                    <h4 data-toggle="tooltip" title="Cambia la paleta de colores para adaptarla a tus necesidades">
+                        Modo
                         daltónico</h4>
                 </a>
             </div>
         </aside>
         <div class="content">
+            <div class="user-info">
+                <h1>Ayuda</h1>
+                <h2>Preguntas más frecuentes</h2>
+                <h3>¿Cómo añado una actividad?</h3>
+                <p>Dirígete a "Lista de eventos", crea o elige una categoría y rellena los datos para crear un nuevo evento. También podrás unirte a eventos destacados o los que han sido compartidos por otros usuarios. </p>
+                <h3>¿Cómo puedo obtener más información de un evento?</h3>
+                <p>Haz clic en el enlace "+ info" que aparece en todos los eventos. Serás redirigido a una página con todos los detalles.</p>
+                <h3>¿Cómo puedo compartir un evento?</h3>
+                <p>Accede a la página de eventos destacados, haz clic en el botón de "Compartir" y escribe el nombre de la persona.</p>
+                <h2>Contacto</h2>
+                <p>Puedes ponerte en contacto con nosotros por email: <a href="mailto:info@easyevent.com">info@easyevent.com</a></p>
+                <p>O por teléfono: <br>912 345 678</p>
+            </div>
         </div>
     </div>
     <footer>
@@ -139,14 +154,15 @@
         <a class="privacy" href="/">
             Copyright© Política de privacidad
         </a>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="./scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-        <script src="./scripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-        <script src="./scripts/index.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-        </script>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./scripts/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="./scripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
 </body>
 
 </html>

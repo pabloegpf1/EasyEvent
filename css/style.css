@@ -439,6 +439,8 @@ body.home{
 }
 
 .selected{
+    padding: 3px;
+    border-radius: 5px;
     background-color: cadetblue;
 }
 
@@ -594,8 +596,6 @@ label {
     width: 40%;
 }
 
-
-
 .validInput{
     background-color: greenyellow;
 }
@@ -630,6 +630,15 @@ label {
     justify-content: center;
     align-items: center;
     white-space: nowrap;
+}
+
+.user-info{
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 @media screen and (max-width: 1000px) {

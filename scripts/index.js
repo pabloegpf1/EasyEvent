@@ -11,7 +11,7 @@ $(document).ready(function () {
     $("#username").html(username)
 
     // Colorblind
-    if (findColorblindCookie() == "true") {
+    if (getCookieByKey("colorblind") == "true") {
         $("body").get(0).style.setProperty("--main-color", "orange");
         $("body").get(0).style.setProperty("--bg-color", "gray");
         $("body").get(0).style.setProperty("--text-color", "black");
@@ -20,8 +20,8 @@ $(document).ready(function () {
 
     $("#colorblind").on('click', function (event) {
         event.preventDefault()
-        console.log(findColorblindCookie())
-        if (findColorblindCookie() == "true"){
+        console.log(getCookieByKey("colorblind"))
+        if (getCookieByKey("colorblind") == "true"){
             document.cookie = "colorblind=false; path=/;"
             $("body").get(0).style.setProperty("--main-color", "rgb(137, 206, 174)");
             $("body").get(0).style.setProperty("--bg-color", "rgb(127, 179, 166)");
@@ -269,7 +269,7 @@ function createCategory(title) {
                 <div class="event-list">
                 </div>
                 <form class="new-event">
-                    <input class="form-control mr-sm-1" name="title" placeholder="Title" aria-label="New Event">
+                    <input class="form-control mr-sm-1" name="title" placeholder="Título" aria-label="New Event">
                     <input class="form-control mr-sm-1" name="date" type="date" aria-label="date">
                 </form>
             </div>
@@ -399,8 +399,7 @@ function findEmail(email, cookie) {
     return false;
 }
 
-function findColorblindCookie() {
-    let name = "colorblind"
+function getCookieByKey(name) {
     var allCookieArray = document.cookie.split(';');
     for (var i = 0; i < allCookieArray.length; i++) {
         var temp = allCookieArray[i].trim();
