@@ -465,7 +465,7 @@ function storeNotificationCategory(user, titleActivity, date){
 }
 
 function createNotification(id, title, date){
-    $(".content").append(`
+    $("#notifications").append(`
     <div class="alert alert-info alert-dismissible fade show" id= "`+id+`" role="alert">
     <div class="tit-notifications">
         <strong>`+title+`</strong>
