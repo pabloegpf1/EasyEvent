@@ -10,6 +10,31 @@ $(document).ready(function () {
 
     $("#username").html(username)
 
+    // Colorblind
+    if (findColorblindCookie() == "true") {
+        $("body").get(0).style.setProperty("--main-color", "orange");
+        $("body").get(0).style.setProperty("--bg-color", "gray");
+        $("body").get(0).style.setProperty("--text-color", "black");
+        colorblind = false;
+    }
+
+    $("#colorblind").on('click', function (event) {
+        event.preventDefault()
+        console.log(findColorblindCookie())
+        if (findColorblindCookie() == "true"){
+            document.cookie = "colorblind=false; path=/;"
+            $("body").get(0).style.setProperty("--main-color", "rgb(137, 206, 174)");
+            $("body").get(0).style.setProperty("--bg-color", "rgb(127, 179, 166)");
+            $("body").get(0).style.setProperty("--text-color", "black");
+            colorblind = false;
+        }else{
+            document.cookie = "colorblind=true; path=/;"
+            $("body").get(0).style.setProperty("--main-color", "orange");
+            $("body").get(0).style.setProperty("--bg-color", "gray");
+            $("body").get(0).style.setProperty("--text-color", "black");
+        }
+    });
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
@@ -370,6 +395,17 @@ function findEmail(email, cookie) {
     } 
     if (emailCookie == email) {
         return true;
+    }
+    return false;
+}
+
+function findColorblindCookie() {
+    let name = "colorblind"
+    var allCookieArray = document.cookie.split(';');
+    for (var i = 0; i < allCookieArray.length; i++) {
+        var temp = allCookieArray[i].trim();
+        if (temp.indexOf(name) == 0)
+            return temp.substring(name.length+1, temp.length);
     }
     return false;
 }
