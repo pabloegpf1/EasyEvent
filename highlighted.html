@@ -21,8 +21,10 @@
             <div class="input-User">
                 <input type="text" placeholder="Nombre de usuario">
                 <div class="opt-buttons">
-                    <button id="share-button">Enviar</buttton>
-                    <button id="cancel-button">Cancelar</button>
+
+                    <button id="share-button" value="Enviar"></button>
+                    <button id="cancel-button" value="Cancelar"></button>
+                    
                 </div>
             </div>
         </div>
@@ -30,31 +32,43 @@
 
     <header class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="list.html">
-            <img class="navbar-image" src="./images/logo.png"> <span class="navbar-title">EasyEvent</span>
+            <img class="navbar-image" src="./images/logo.png" alt="logo"> <span class="navbar-title">EasyEvent</span>
         </a>
         <ul class="navbar-nav mr-auto">
-            <a data-toggle="tooltip" title="Calendario" title="Calendario" class="nav-item" href="calendar.html">
-                <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
-            </a>
-            <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
-                <img class="navbar-icons" src="./images/list.png" alt="Lista">
-            </a>
-            <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
-                <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
-            </a>
-            <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
-                <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
-            </a>
-            <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
-                <img class="navbar-icons" src="./images/chat.png" alt="Chat">
-            </a>
-            <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
-                <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
-            </a>
+            <li>
+                <a data-toggle="tooltip" title="Calendario" class="nav-item" href="calendar.html">
+                    <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
+                    <img class="navbar-icons" src="./images/list.png" alt="Lista">
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
+                    <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
+                    <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
+                    <img class="navbar-icons" src="./images/chat.png" alt="Chat">
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
+                    <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
+                </a>
+            </li>
         </ul>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
-        <a class="navbar-brand" href="#" role="menuitem" id="dropdownMenuLink" data-toggle="dropdown">
-            <span id="username">Username</span> <img class="navbar-image" src="./images/user.png">
+        <a class="navbar-brand" href="#" id="dropdownMenuLink" data-toggle="dropdown">
+            <span id="username">Username</span> <img class="navbar-image" src="./images/user.png" alt="user">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="user.html">Editar perfil</a>
@@ -62,26 +76,38 @@
         </div>
     </header>
         <div class="mobile-header">
-            <ul>
-                <a data-toggle="tooltip" title="Calendario" title="Calendario" class="nav-item" href="calendar.html">
-                    <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
-                </a>
-                <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
-                    <img class="navbar-icons" src="./images/list.png" alt="Lista">
-                </a>
-                <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
-                    <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
-                </a>
-                <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
-                    <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
-                </a>
-                <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
-                    <img class="navbar-icons" src="./images/chat.png" alt="Chat">
-                </a>
-                <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
-                    <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
-                </a>
-            </ul>
+                <ul>
+                    <li>
+                        <a data-toggle="tooltip" title="Calendario" class="nav-item" href="calendar.html">
+                            <img class="navbar-icons" src="./images/calendar.png" alt="Calendario">
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tooltip" title="Lista" class="nav-item" href="list.html">
+                            <img class="navbar-icons" src="./images/list.png" alt="Lista">
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tooltip" title="Destacados" class="nav-item" href="highlighted.html">
+                            <img class="navbar-icons" src="./images/danger.png" alt="Destacados">
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tooltip" title="Notificaciones" class="nav-item" href="notifications.html">
+                            <img class="navbar-icons" src="./images/notifications.png" alt="Notificaciones">
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tooltip" title="Chat" class="nav-item" href="chat.html">
+                            <img class="navbar-icons" src="./images/chat.png" alt="Chat">
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tooltip" title="Puntuaciones" class="nav-item" href="likes.html">
+                            <img class="navbar-icons" src="./images/star.svg" alt="Puntuaciones">
+                        </a>
+                    </li>
+                </ul>
         </div>
     <div class="main">
         <aside>
@@ -134,14 +160,14 @@
         </aside>
         <div class="content">
             <div class="content-block">
-                <img src="./images/hiking.jpg">
+                <img src="./images/hiking.jpg" alt="mainImage">
             </div>
             <div class="content-block">
                 <div class="activity-description">
                     <h2>Paracaidismo</h2><a href="event.html">+info</a>
                     <div class="opt-activity">
-                        <img class="pointers joingroup-activity" src="images/more.svg" alt="">
-                        <img class="pointers sharefriend-activity" src="images/share.svg" alt="">
+                        <img class="pointers joingroup-activity" src="images/more.svg" alt="join">
+                        <img class="pointers sharefriend-activity" src="images/share.svg" alt="share">
                     </div>
                 </div>
                 <p>21-12-2019</p>
@@ -151,8 +177,8 @@
                     <h2>Salida al campo</h2>
                     <a href="event.html">+info</a>
                     <div class="opt-activity">
-                        <img class="pointers joingroup-activity" src="images/more.svg" alt="">
-                        <img class="pointers sharefriend-activity" src="images/share.svg" alt="">
+                        <img class="pointers joingroup-activity" src="images/more.svg" alt="join">
+                        <img class="pointers sharefriend-activity" src="images/share.svg" alt="share">
                     </div>
                 </div>
                 <p>15-12-2019</p>
