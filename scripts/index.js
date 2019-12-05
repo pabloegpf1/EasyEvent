@@ -78,13 +78,20 @@ $(document).ready(function () {
         evt.preventDefault();
         var inputsArray = Array.from($("#regist input:not(#check)"));
 
-        console.log(findCookie(inputsArray))
         console.log(inputsArray);
-        if (findCookie(inputsArray) > 0) {
-            alert("El email: " + inputsArray[0].value + " ya existe");
-        } else {
-            storeCookie(inputsArray);
-            window.location.replace("list.html");
+        if (inputsArray[2].value.length<8){
+            alert("La contraseña ha de tener al menos 8 caracteres.")
+            return
+        } else if (inputsArray[1].value.contains('@') == false){
+            alert("El formato de email es incorrecto.")
+            return
+        }else{
+            if (findCookie(inputsArray) > 0) {
+                alert("El email: " + inputsArray[0].value + " ya existe");
+            } else {
+                storeCookie(inputsArray);
+                window.location.replace("list.html");
+            }
         }
     });
 
