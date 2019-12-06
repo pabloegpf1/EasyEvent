@@ -219,8 +219,9 @@ function addEventListeners() {
             let id = $(this).attr('id');
             let category = $(this).parent().parent().find('h2').html();
             let title = $(this).find('h3').html();
-            let date = $(this).find('li:nth-child(2)').html();
+            let date = $(this).find('li:nth-child(3)').html();
             //OOOOTRA A ESTO ES FILPANTE
+            console.log(id);
             changeEventCookie(category, title, date, id+"A");
         }
     });
@@ -374,6 +375,7 @@ function changeEventCookie(category, title, date, id) {
     storeString += date;
     storeString += ";path=/;";
     document.cookie = storeString;
+    console.log(storeString);
 }
 
 
