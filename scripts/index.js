@@ -1,3 +1,8 @@
+/**
+ * username -> obtenemos el nombre de usuario de la cookie
+ * useremail -> obtenemos el email del usuario de la cookie
+ * userpasssword -> obtenemos la contraseña del usuario de la cookie.
+ */
 let username = getUserdata()[0];
 let useremail = getUserdata()[1];
 let userpassword = getUserdata()[2];
@@ -6,12 +11,16 @@ $(document).ready(function () {
 
     addEventListeners();
 
+    //Encargada de cargar los nuevos eventos
     loadEvents();
 
+    //Encargada ce cargar las notificaciones
     loadNotifiactions();
 
+    //Establecemos el nombre del usuario.
     $("#username").html(username)
 
+    //Buscador
     $(".search-box").find('input').keyup(function () {
         let query = $(this).val();
         $(".event").each(function (index) {
@@ -52,6 +61,7 @@ $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
+    //Cuando se realice el submit del formulario para crear un nuevo evento.
     $(".new-event").on('submit', function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -67,6 +77,7 @@ $(document).ready(function () {
         }
     });
 
+    //Cuando se realice el submit del formulario para crear una nueva categoria.
     $(".new-category").on('submit', function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -91,6 +102,8 @@ $(document).ready(function () {
         });
     });
 
+    //Obtenemos los valores del registro y los almacenamos en las cookies. Además guardamos el usuario
+    //en la cookie destinada a almacenar todos los usuarios registrados para nuestra plataforma.
     $("#regist").submit(function (evt) {
         evt.preventDefault();
         var inputsArray = Array.from($("#regist input:not(#check)"));
@@ -109,6 +122,8 @@ $(document).ready(function () {
         }
     });
 
+    //Obtenemos los valores cuando se realice el submit del formulario, además comprobamos si el email introducido es válido,
+    //y la contraseña concuerda con la contraseña guardada para este usuario.
     $("#login").submit(function (evt) {
         evt.preventDefault();
         var inputsArray = Array.from($("#login input"));
@@ -120,12 +135,13 @@ $(document).ready(function () {
         }
     });
 
+    //El usuario registrado se une a una actividad al realizar click sobre el boton
     $(".joingroup-activity").on("click", function () {
         let titleActivity = $(this).parent().parent().find("h2").html();
         let date = $(this).parent().parent().parent().find("p").html();
         storeEventCookie("Sin Categoría", titleActivity, date);
     });
-
+    //Al realizar click sobre el icono de compartir se abre un pop-up para enviar la actividad al usuario que queramos.
     $(".sharefriend-activity").on("click", function () {
         $("#activity-name").text($(this).parent().parent().find("h2").html());
         $("#activity-date").text($(this).parent().parent().parent().find("p").html());
@@ -140,10 +156,13 @@ $(document).ready(function () {
         $(".share-alert").show();
     });
 
+    //Se oculta el pop up para compartir la actividad
     $("#cancel-button").on("click", function () {
         $(this).parent().parent().parent().parent().hide();
     });
 
+    //Al realizar click sobre en boton de enviar se envia la actividad al usuario indicado a traves del input.
+    //Dicho usuario debe de estar previamente registrado y almacenado en las cookies.
     $("#share-button").on("click", function () {
         let userToshare = $(this).parent().parent().find("input").val();
         let allUsers = obtainUsers();
@@ -185,6 +204,8 @@ $(document).ready(function () {
 
 });
 
+//Funcion mediante la que incluimos todos las funciones, drag&drop, nuevos eventos, close events... A cada uno de los elementos
+//creados.
 function addEventListeners() {
 
     // Close event
@@ -217,11 +238,12 @@ function addEventListeners() {
         stop: function (event, ui) {
             $(ui.helper).css('width', "");
             let id = $(this).prop('id');
+            /*En ciertas ocasiones no se obtiene el ultimo digito del id. Establecemos el id con una A al final, con lo que
+            en el caso de que no sea una A el último digito de la variable id se lo introducimos manualemnte*/
             if(id.substring(id.length-1) != "A") id = id + "A";
             let category = $(this).parent().parent().find('h2').html();
             let title = $(this).find('h3').html();
             let date = $(this).find('li:nth-child(3)').html();
-            //OOOOTRA A ESTO ES FILPANTE
             console.log(id+"-"+ id.substring(id.length-1));
             changeEventCookie(category, title, date, id);
         }
