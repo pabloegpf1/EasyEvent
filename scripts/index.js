@@ -216,13 +216,14 @@ function addEventListeners() {
         connectToSortable: ".event-list",
         stop: function (event, ui) {
             $(ui.helper).css('width', "");
-            let id = $(this).attr('id');
+            let id = $(this).prop('id');
+            if(id.substring(id.length-1) != "A") id = id + "A";
             let category = $(this).parent().parent().find('h2').html();
             let title = $(this).find('h3').html();
             let date = $(this).find('li:nth-child(3)').html();
             //OOOOTRA A ESTO ES FILPANTE
-            console.log(id);
-            changeEventCookie(category, title, date, id+"A");
+            console.log(id+"-"+ id.substring(id.length-1));
+            changeEventCookie(category, title, date, id);
         }
     });
 
